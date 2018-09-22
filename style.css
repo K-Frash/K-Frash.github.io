@@ -135,6 +135,7 @@ nav ul li a:hover::before{
 }
 
 .head{
+  display: block;
   background-image: url(assets/me.jpg);
   background-position: center;
   height: auto;
@@ -153,6 +154,10 @@ nav ul li a:hover::before{
   padding: 50px 50px;
   text-align: center;
   color: white;
+}
+
+#myimg{
+  opacity: 1;
 }
 
 img{
@@ -213,6 +218,10 @@ img:hover{
   margin-left: 50px;
   margin-right: 50px;
   margin-top: 50px;
+}
+
+.profile{
+  opacity: 1;
 }
 
 .skills{
