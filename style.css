@@ -197,11 +197,22 @@ img:hover{
   text-decoration: none;
 }
 
+@media (max-width:1000px){
+  img#bodyimgs{
+    display: none;
+  }
+
+}
+
 .textwrite{
   margin: 0px;
 }
 
-.profile{
+.main{
+  text-align: center;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 50px;
 }
 
 .skills{
