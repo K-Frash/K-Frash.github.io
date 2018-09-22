@@ -4,6 +4,35 @@
   font-family: "Roboto";
 }
 
+h1{
+  font-size: 30px;
+  font-weight: bold;
+  border-bottom: 2px solid rgba(187, 187, 187, 0.22);
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(187, 187, 187, 0.22);
+  padding-bottom: 5px;
+  color: #feb729;
+
+}
+
+h2{
+  font-size: 40px;
+}
+
+h3{
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 10px;
+  text-align: left;
+}
+
+p{
+  padding-top: 15px;
+  font-size: 20px;
+  margin-left: 10px;
+  margin-right: 10px
+}
 
 body
 {
@@ -107,6 +136,7 @@ nav ul li a:hover::before{
 
 .head{
   background-image: url(assets/me.jpg);
+  background-position: center;
   height: auto;
   width: auto;
 
@@ -120,18 +150,65 @@ nav ul li a:hover::before{
 .sep{
   height: 100%;
   background-color: #feb729;
-  padding: 70px 80px;
+  padding: 50px 50px;
   text-align: center;
   color: white;
+}
+
+img{
+  padding-top: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
+  opacity: 0.7;
+}
+
+img:hover{
+  opacity: 1;
+}
+
+.tags{
+  padding-top: 10px;
+}
+
+.tags ul{
+  list-style: none;
+}
+
+.tags ul li{
+  margin: 5px;
+  display: inline-block;
+  max-width: 100px;
+  height: 28px;
+  line-height: 28px;
+  padding-top: 0px;
+  padding-right: 10px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+  border: 1px solid #ccc;
+  border-color: #feb729;
+
+  border-radius: 3px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  overflow: hidden;
+  color: #333;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.textwrite{
+  margin: 0px;
 }
 
 .profile{
 }
 
-.abilities{
+.skills{
 }
 
-.experiences{
+.experience{
+
 }
 
 .projects{

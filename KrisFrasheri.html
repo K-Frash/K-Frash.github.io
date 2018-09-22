@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>ScrollTest</title>
+  <title>Kris Frasheri</title>
+  <meta charset="utf-8">
   <link href="style.css" rel="stylesheet">
 </head>
 
@@ -9,8 +10,8 @@
   <div class="container">
     <nav>
       <ul>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Abilities</a></li>
+        <li><a href="#sect-contact">Profile</a></li>
+        <li><a href="#">Skills</a></li>
         <li><a href="#">Experiences</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Contact</a></li>
@@ -23,38 +24,82 @@
   <div class="sect head">
     <div class="Kris">Kris <id class="Frasheri"><b>Frasheri</b></id></div>
   </div>
-
   <div class="sep">
-    <h1>Creativity is the Ability </h1>
-    <p>to make or see something that did not exist before.<p>
+
+    <h2>Creativity is the Ability </h2>
+    <p2 id="textwrite"></p2>
+    <script>
+    var i = 0;
+    var txt = "to make or see something that did not exist before.";
+    var speed = 50;
+
+    function typeWrite(){
+      if (i < txt.length){
+        document.getElementById("textwrite").innerHTML += txt.charAt(i);
+        i++;
+        setTimeout(typeWrite, speed);
+      }
+    }
+    typeWrite()
+    </script>
+
   </div>
 
   <div class="sect profile">
-    <h1>Profile</h1>
+    <h1><b>"Hello World!"</b></h1>
+
+    <p> My name is <b>Kris Frasheri</b>, an aspiring software developer and
+      entrepreneur studying computer science at the University of Waterloo.</p>
+    <p>I have a strong interest in programming and enjoy applying my skills in my
+      personal projects. I am fond of full stack development, machine learning,
+      and augmented reality.</p>
   </div>
 
-  <div class="sep">My name is Kris</div>
-
-  <div class="sect abilities">
-    <h1>Abilities</h1>
+  <div class="sect skills">
+    <h1><b>Skills</b></h1>
+    <h3>Programming</h3>
+      <p>I have learned lots of important aspects about computer science throughout
+      my years in school. I am comfortable with object oriented languages such
+      as C++ and Python. I also enjoy powerful low level languages such as C and assembly.</p>
+    <h3>Graphic Design</h3>
+      <p>I have a very keen eye for aesthetics and very much enjoy design
+        overall. I have produced numerous prototypes for large projects and
+        have applied my UI/UX knowledge in the development of visual assets for
+        various products/services. I am up to date with the latest trends in
+        graphic design and apply a modern feel to my designs.<br/></p>
+    <div class="tags">
+      <ul>
+        <li><span>HTML</span></li>
+        <li><span>CSS</span></li>
+        <li><span>Javascript</span></li>
+        <li><span>C++</span></li>
+        <li><span>C</span></li>
+        <li><span>C#</span></li>
+        <li><span>Python</span></li>
+        <li><span>Bash</span></li>
+        <li><span>Unity</span></li>
+        <li><span>InVision</span></li>
+        <li><span>Photoshop</span></li>
+        <li><span>Illustrator</span></li>
+        <li><span>AfterEffects</span></li>
+      </ul>
+    </div>
   </div>
 
-  <div class="sep"></div>
-
-  <div class="sect experiences">
-    <h1>Experiences</h1>
+  <div class="sect experience">
+    <h1>Experience</h1>
   </div>
 
-  <div class="sep"></div>
 
   <div class="sect projects">
     <h1>Projects</h1>
   </div>
 
-  <div class="sep"></div>
-
   <div class="sect contact">
     <h1>Contact</h1>
+    <a href="https://github.com/RagnaroksPride"><img src="assets/github.jpg" width="30px"></a>
+    <a href="https://www.linkedin.com/in/kris-frasheri-40aa8513a/"><img src="assets/linkedin.jpg" width="30px"></a>
+    <a href="mailto:krisfrasheri@gmail.com"><img src="assets/mail.jpg" width="30px"></a>
   </div>
 
 </body>
