@@ -1,15 +1,19 @@
 {
   "name": "kfrasher-portfolio",
+  "homepage": "https://k-frash.github.io/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@preact/signals": "^2.0.4",
+    "gh-pages": "^6.3.0",
     "preact": "^10.26.4"
   },
   "devDependencies": {
