@@ -1,0 +1,48 @@
+/* Quick reset of vanilla DOM */
+* {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overscroll-behavior: none;
+    overflow-x: hidden;
+}
+
+/* Light Mode Palette */
+:root {
+    --primary-color: #1A1A1A;
+    --secondary-color: #F7FBFC;
+    --tertiary-color: #D6E6F2;
+    --pop1-color: #27548A;
+    --pop2-color: #D6E6F2;
+  }
+
+/* Dark Mode Palette */
+[data-theme="dark"] {
+    --primary-color: #E1E2E4;
+    --secondary-color: #181A21;
+    --tertiary-color: #18253A;
+    --pop1-color: #DECA32;
+    --pop2-color: #DE5A32;
+}
+
+html, body,
+nav, header, footer, main,
+div, span, p, a, h1, h2, h3, h4, h5, h6,
+button, input, textarea, img {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    filter 0.3s ease;
+}
+
+.disable-transitions * {
+  transition: none !important;
+}

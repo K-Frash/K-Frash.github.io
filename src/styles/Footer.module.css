@@ -1,0 +1,16 @@
+.body {
+    background-color: var(--tertiary-color);
+    color: var(--primary-color);
+    flex: 0 0 auto;
+    height: 1.5rem;
+    padding: 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.body p{
+    font-size: 14px;
+    color: var(--pop1-color)
+}

@@ -1,0 +1,192 @@
+.body {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 2rem;
+  gap: 2rem;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  max-width: 2000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.left {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 1600px;
+}
+
+.name {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.titles {
+  font-size: 2rem;
+  color: var(--pop1-color);
+}
+
+.description {
+  flex: 1;
+  white-space: pre-line;
+}
+
+.description h1 {
+  font-size: 2rem;
+}
+
+.description p {
+  font-size: 1.5rem;
+  /* line-height: 1.6; */
+}
+
+.right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  min-width: 280px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.imageContainer {
+  --angle: 135deg;
+  position: relative;
+  border-radius: 50%;
+  padding: 10px;
+  background: linear-gradient(
+    var(--angle),
+    var(--pop2-color),
+    var(--pop1-color)
+  );
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25),
+    inset 0 2px 6px rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  perspective: 800px;
+  will-change: transform, background;
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), --angle 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.imageContainer:hover {
+  transform: scale(1.13);
+}
+
+.imageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--secondary-color);
+  pointer-events: none;
+}
+
+.textBlock {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.degrees {
+  width: 100%;
+}
+
+.degrees p {
+  margin: 0;
+  text-align: left;
+  font-weight: bold;
+  font-size: clamp(1.2rem, 2.3vw, 1.7rem);
+  white-space: nowrap;
+}
+
+.jobTitle {
+  color: var(--pop1-color);
+}
+
+.jobTitle p {
+  margin: 0;
+  font-weight: bold;
+  text-align: left;
+  font-size: clamp(1.2rem, 2.3vw, 1.7rem);
+  white-space: nowrap;
+}
+
+.infoBox {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 2vh;
+}
+
+.links {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--primary-color);
+}
+
+.linkItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+}
+
+.linkItem span {
+  position: relative;
+  display: inline-block;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: inherit;
+  padding-bottom: 2px;
+}
+
+.linkItem:hover span {
+  color: var(--pop1-color);
+}
+
+.linkItem span::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background-color: var(--pop1-color);
+  transition: width 0.3s ease;
+}
+
+.linkItem:hover span::after {
+  width: 100%;
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  color: inherit;
+  fill: currentColor;
+}
+
+.linkItem:hover .icon {
+  color: var(--pop1-color);
+}
+
+.linkItem,
+.icon,
+.linkItem span {
+  transition: color 0s ease;
+}

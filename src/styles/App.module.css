@@ -1,0 +1,14 @@
+.root {
+    background-color: blue;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+  
+.body {
+    background-color: var(--secondary-color);
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    overflow-x: hidden;
+}

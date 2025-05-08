@@ -1,0 +1,99 @@
+.nav {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 2rem;
+    height: 4rem;
+    flex: 0;
+}
+  
+.left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logoContainer {
+    position: relative;
+    height: 3rem;
+    width: 3rem;
+  }
+
+.logo {
+    position: absolute;
+    height: 3rem;
+    transition: opacity 0.4s ease;
+    pointer-events: none;  
+}
+
+.name {
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+.name span {
+    font-size: 1.8rem;
+    line-height: 1.4rem;
+}
+
+.right {
+    flex: 1;
+    justify-content: right;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    font-size: 1.2rem;
+}
+
+.link {
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: relative;
+    padding-bottom: 3px;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.25s ease;
+}
+
+.link:hover {
+    opacity: 0.8;
+}
+
+.dot {
+    font-size: 1.8rem;
+    margin: 0 0.5rem;
+    padding-bottom: 3px;
+    color: var(--primary-color);
+}
+
+.active {
+    color: var(--pop1-color);
+    border-bottom-color: var(--pop1-color);
+}
+
+.toggle {
+    height: 2rem;
+    width: 2rem;
+    padding-bottom: 3px;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+}
+  
+.visible {
+    opacity: 1;
+    z-index: 2;
+}
+  
+.hidden {
+    opacity: 0;
+    z-index: 1;
+}
