@@ -12,6 +12,7 @@ html {
     height: 100%;
     overscroll-behavior: none;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 /* Light Mode Palette */

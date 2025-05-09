@@ -48,7 +48,7 @@ function About() {
           HCI Researcher | AI Engineer | Graphics Engineer | Educator
         </div>
         <div class={style.description}>
-          <h1>Hello there 👋!</h1>
+          <h1>Hello there! 👋</h1>
           <p>
             I'm Kris Frasheri, an AI and HCI researcher who recently completed
             my Master of Mathematics in Computer Science at the University of
@@ -87,7 +87,7 @@ function About() {
         <div class={style.infoBox}>
           <div class={style.degrees}>
             <p>Computer Science, M.Math.</p>
-            <p>Computer Science, B.Sc.</p>
+            <p>Computer Science, B.Cs.</p>
           </div>
           <div class={style.jobTitle}>
             <p>Computer Science Lecturer @</p>
