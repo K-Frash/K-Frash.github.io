@@ -1,22 +1,23 @@
 import style from "../styles/Navbar.module.css";
 import { useState, useEffect } from "preact/hooks";
+import { Link, useLocation } from "wouter";
+
 import logoLight from "../assets/Logo_Rd_Light.png";
 import logoDark from "../assets/Logo_Rd_Dark.png";
 import darkIcon from "../assets/sun.svg";
 import lightIcon from "../assets/moon.svg";
-import { activeTab } from "../state";
 
-type Tab = {
-  name: string;
-  component: any;
-};
+const tabs = [
+  { label: "ABOUT", path: "/" },
+  { label: "RÉSUMÉ", path: "/resume" },
+  { label: "TEACHING", path: "/teaching" },
+  { label: "PROJECTS", path: "/projects" },
+  { label: "CONTACT", path: "/contact" },
+];
 
-type NavbarProps = {
-  tabs: Tab[];
-};
-
-export default function Navbar({ tabs }: NavbarProps) {
+export default function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
+  const [location] = useLocation();
 
   function toggleDarkMode(): void {
     const newMode = !darkMode;
@@ -25,10 +26,16 @@ export default function Navbar({ tabs }: NavbarProps) {
       "data-theme",
       newMode ? "dark" : "light"
     );
+    localStorage.setItem("theme", newMode ? "dark" : "light");
   }
 
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", "light");
+  useEffect(() => {    
+    const savedTheme = localStorage.getItem("theme");
+    const themePref = window.matchMedia("(prefers-color-scheme: dark)");
+    const loadMode = savedTheme ?? (themePref ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", loadMode);
+    setDarkMode(loadMode === "dark");
+    document.documentElement.classList.remove("disable-transitions");
   }, []);
   return (
     <nav class={style.nav}>
@@ -36,16 +43,12 @@ export default function Navbar({ tabs }: NavbarProps) {
         <div class={style.logoContainer}>
           <img
             src={logoLight}
-            class={`${style.logo} ${
-              !darkMode ? style.visible : style.hidden
-            }`}
+            class={`${style.logo} ${!darkMode ? style.visible : style.hidden}`}
             alt="Light Logo"
           />
           <img
             src={logoDark}
-            class={`${style.logo} ${
-              darkMode ? style.visible : style.hidden
-            }`}
+            class={`${style.logo} ${darkMode ? style.visible : style.hidden}`}
             alt="Dark Logo"
           />
         </div>
@@ -60,15 +63,16 @@ export default function Navbar({ tabs }: NavbarProps) {
         <div class={style.links}>
           {tabs.map((tab, index) => (
             <>
-              <span
-                key={tab.name}
-                class={`${style.link} ${
-                  activeTab.value === tab.name ? style.active : ""
-                }`}
-                onClick={() => (activeTab.value = tab.name)}
-              >
-                {tab.component.displayName}
-              </span>
+              <Link href={tab.path}>
+                <span
+                  key={tab.label}
+                  class={`${style.link} ${
+                    location === tab.path ? style.active : ""
+                  }`}
+                >
+                  {tab.label}
+                </span>
+              </Link>
               {index < tabs.length - 1 && <span class={style.dot}>•</span>}
             </>
           ))}

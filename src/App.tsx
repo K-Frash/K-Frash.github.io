@@ -1,12 +1,12 @@
 import { render } from "preact";
-import { useMemo } from "preact/hooks";
-import { activeTab } from "./state";
 import "./styles/theme.css";
 import style from "./styles/App.module.css";
+import { useEffect } from "preact/hooks";
+
+import { Route, Switch } from "wouter";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Teaching from "./components/Teaching";
@@ -14,24 +14,21 @@ import Resume from "./components/Resume";
 import Projects from "./components/Projects";
 
 export default function App() {
-  const tabs = useMemo(() => [
-      { name: "About", component: About },
-      { name: "Resume", component: Resume },
-      { name: "Teaching", component: Teaching },
-      { name: "Projects", component: Projects },
-      { name: "Contact", component: Contact },
-    ],[]
-  );
-
-  const CurrentPage =
-    tabs.find((tab) => tab.name === activeTab.value)?.component || About;
-
+  useEffect(() => {
+    document.documentElement.classList.remove("disable-transitions");
+  }, []);  
   return (
     <>
       <div id="root" class={style.root}>
-        <Navbar tabs={tabs} />
+        <Navbar />
         <div id="body" class={style.body}>
-          <CurrentPage />
+          <Switch>
+            <Route path="/" component={About} />
+            <Route path="/resume" component={Resume} />
+            <Route path="/teaching" component={Teaching} />
+            <Route path="/projects" component={Projects} />
+            <Route path="/contact" component={Contact} />
+          </Switch>
         </div>
         <Footer />
       </div>

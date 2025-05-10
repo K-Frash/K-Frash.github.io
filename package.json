@@ -14,7 +14,8 @@
   "dependencies": {
     "@preact/signals": "^2.0.4",
     "gh-pages": "^6.3.0",
-    "preact": "^10.26.4"
+    "preact": "^10.26.4",
+    "wouter": "^3.7.0"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.1",

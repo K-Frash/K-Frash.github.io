@@ -3,7 +3,7 @@ import { useEffect, useRef } from "preact/hooks";
 
 import profileImg from "../assets/profile.jpg";
 
-function About() {
+export default function About() {
   const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -151,7 +151,3 @@ function About() {
     </div>
   );
 }
-
-About.displayName = "ABOUT";
-
-export default About;

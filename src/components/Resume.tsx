@@ -58,7 +58,7 @@ function ResumeCard({ title, org, dates, logo, bullets }: ResumeCardProps) {
   );
 }
 
-function Resume() {
+export default function Resume() {
   return (
     <div class={style.body}>
       <section class={style.section}>
@@ -231,7 +231,7 @@ function Resume() {
         />
       </section>
       <section class={style.section}>
-        <h2 class={style.sectionTitle}>Service</h2>
+        <h2 class={style.sectionTitle}>SERVICE</h2>
         <ResumeCard
           title="DIS 2025 Reviewer"
           org="ACM Conference on Designing Interactive Systems"
@@ -285,7 +285,3 @@ function Resume() {
     </div>
   );
 }
-
-Resume.displayName = "RÉSUMÉ";
-
-export default Resume;
