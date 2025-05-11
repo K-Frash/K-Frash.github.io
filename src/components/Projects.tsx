@@ -61,34 +61,6 @@ const allProjects: ProjectCardProps[] = [
     ],
   },
   {
-    title: "MNIST Math",
-    blurb:
-      "An educational web application that enables users to solve arithmetic problems by drawing digits on a virtual canvas. The application utilizes a convolutional neural network (CNN) trained on the MNIST dataset via TensorFlow and Keras. Post-training, the model was converted to TensorFlow.js using the tfjs-converter, allowing for real-time, client-side digit recognition directly within the browser.",
-    image: mnist,
-    url: "https://github.com/K-Frash/MNIST-Math/",
-    tags: [
-      "Python",
-      "Tensorflow",
-      "Keras",
-      "NumPy",
-      "Pandas",
-      "Web Development",
-      "AI/ML",
-      "Human-Computer Interaction",
-      "Game",
-    ],
-    links: [
-      {
-        icon: <GitHubIcon class={style.icon} />,
-        url: "https://github.com/K-Frash/MNIST-Math/?tab=readme-ov-file",
-      },
-      {
-        icon: <WorldIcon class={style.icon} />,
-        url: "https://k-frash.github.io/MNIST-Math/",
-      },
-    ],
-  },
-  {
     title: "mAtrIx: A Social Media Bandit Simulation",
     blurb:
       "mAtrIx is an interactive web application designed to simulate and visualize multi-armed bandit algorithms (MABs) within the context of personalized social media recommendations. The application provides real-time visualizations using D3.js to demonstrate how different bandit strategies adapt to user interactions. mAtrIx serves as an educational tool that demonstrates how adaptive recommendation systems work.",
@@ -139,6 +111,34 @@ const allProjects: ProjectCardProps[] = [
         url: "https://github.com/K-Frash/NLP-Sub-Domain-Data-Poisoning",
       },
       { icon: <PDFIcon class={style.icon} />, url: spAttPaper },
+    ],
+  },
+  {
+    title: "MNIST Math",
+    blurb:
+      "An educational web application that enables users to solve arithmetic problems by drawing digits on a virtual canvas. The application utilizes a convolutional neural network (CNN) trained on the MNIST dataset via TensorFlow and Keras. Post-training, the model was converted to TensorFlow.js using the tfjs-converter, allowing for real-time, client-side digit recognition directly within the browser.",
+    image: mnist,
+    url: "https://github.com/K-Frash/MNIST-Math/",
+    tags: [
+      "Python",
+      "Tensorflow",
+      "Keras",
+      "NumPy",
+      "Pandas",
+      "Web Development",
+      "AI/ML",
+      "Human-Computer Interaction",
+      "Game",
+    ],
+    links: [
+      {
+        icon: <GitHubIcon class={style.icon} />,
+        url: "https://github.com/K-Frash/MNIST-Math/?tab=readme-ov-file",
+      },
+      {
+        icon: <WorldIcon class={style.icon} />,
+        url: "https://k-frash.github.io/MNIST-Math/",
+      },
     ],
   },
   {
