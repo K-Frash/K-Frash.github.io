@@ -22,7 +22,6 @@
   padding-bottom: 0.5rem;
 }
 
-
 .card {
   display: flex;
   flex-direction: column;
@@ -54,7 +53,6 @@
   font-size: 1.5rem;
 }
 
-
 .dates {
   display: flex;
   flex-direction: column;
@@ -62,12 +60,10 @@
   gap: 0.25rem;
 }
 
-.dates div{
+.dates div {
   font-style: italic;
   font-size: 1.2rem;
-
 }
-
 
 .details {
   display: flex;
@@ -75,7 +71,7 @@
   gap: 1.5rem;
 }
 
-.logoContainer{
+.logoContainer {
   display: flex;
   align-items: center;
 }

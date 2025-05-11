@@ -27,8 +27,10 @@ html {
 /* Dark Mode Palette */
 [data-theme="dark"] {
     --primary-color: #E1E2E4;
-    --secondary-color: #181A21;
-    --tertiary-color: #18253A;
+    /* --secondary-color: #181A21; */
+    --secondary-color: #18253A;
+    /* --tertiary-color: #18253A; */
+    --tertiary-color: #223950;
     --pop1-color: #DECA32;
     --pop2-color: #DE5A32;
 }

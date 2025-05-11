@@ -12,14 +12,20 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@egjs/react-grid": "^1.17.0",
+    "@preact/compat": "^18.3.1",
     "@preact/signals": "^2.0.4",
+    "framer-motion": "^12.10.5",
     "gh-pages": "^6.3.0",
+    "motion": "^12.10.5",
     "preact": "^10.26.4",
+    "react-masonry-css": "^1.0.16",
     "wouter": "^3.7.0"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.1",
     "typescript": "~5.7.2",
-    "vite": "^6.3.1"
+    "vite": "^6.3.1",
+    "vite-plugin-static-copy": "^3.0.0"
   }
 }

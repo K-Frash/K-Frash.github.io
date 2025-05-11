@@ -2,10 +2,10 @@ import style from "../styles/Navbar.module.css";
 import { useState, useEffect } from "preact/hooks";
 import { Link, useLocation } from "wouter";
 
-import logoLight from "../assets/Logo_Rd_Light.png";
-import logoDark from "../assets/Logo_Rd_Dark.png";
-import darkIcon from "../assets/sun.svg";
-import lightIcon from "../assets/moon.svg";
+import logoLight from "../assets/navbar/Logo_Rd_Light.png";
+import logoDark from "../assets/navbar/Logo_Rd_Dark.png";
+
+import { DarkIcon, LightIcon } from "./icons";
 
 const tabs = [
   { label: "ABOUT", path: "/" },
@@ -29,7 +29,7 @@ export default function Navbar() {
     localStorage.setItem("theme", newMode ? "dark" : "light");
   }
 
-  useEffect(() => {    
+  useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     const themePref = window.matchMedia("(prefers-color-scheme: dark)");
     const loadMode = savedTheme ?? (themePref ? "dark" : "light");
@@ -78,12 +78,11 @@ export default function Navbar() {
           ))}
         </div>
 
-        <img
-          src={darkMode ? darkIcon : lightIcon}
-          class={style.toggle}
-          onClick={toggleDarkMode}
-          alt="Toggle theme"
-        />
+        {!darkMode ? (
+          <DarkIcon class={style.toggle} onClick={toggleDarkMode} />
+        ) : (
+          <LightIcon class={style.toggle} onClick={toggleDarkMode} />
+        )}
       </div>
     </nav>
   );
