@@ -1,0 +1,70 @@
+.body {
+  padding: 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+}
+
+.quote p {
+  font-size: 2rem;
+  font-style: italic;
+  text-align: right;
+  margin: 0;
+}
+
+.titleText {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.link {
+  text-decoration: none;
+  display: block;
+}
+
+.card {
+  padding: 1rem;
+  border: 5px solid rgba(255, 255, 255, 0.5);
+  position: relative;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  color: white;
+  text-align: center;
+  user-select: none;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 1.4rem;
+  opacity: 0.85;
+}
+
+.term {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* Course-specific backgrounds via the `id` */
+.cs115 {
+  background: linear-gradient(135deg, #6fa4ff, #85bfff);
+}
+.cs116 {
+  background: linear-gradient(135deg, #ffd35f, #ffb347);
+}
+.cs246 {
+  background: linear-gradient(135deg, #ff9a5b, #ff6a6a);
+}
