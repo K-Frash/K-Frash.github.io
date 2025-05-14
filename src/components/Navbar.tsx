@@ -1,6 +1,7 @@
 import style from "../styles/Navbar.module.css";
 import { useState, useEffect } from "preact/hooks";
 import { Link, useLocation } from "wouter";
+import { motion, AnimatePresence } from "framer-motion";
 
 import logoLight from "../assets/navbar/Logo_Rd_Light.png";
 import logoDark from "../assets/navbar/Logo_Rd_Dark.png";
@@ -17,6 +18,7 @@ const tabs = [
 
 export default function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [location] = useLocation();
 
   function toggleDarkMode(): void {
@@ -39,31 +41,35 @@ export default function Navbar() {
   }, []);
   return (
     <nav class={style.nav}>
-      <div class={style.left}>
-        <div class={style.logoContainer}>
-          <img
-            src={logoLight}
-            class={`${style.logo} ${!darkMode ? style.visible : style.hidden}`}
-            alt="Light Logo"
-          />
-          <img
-            src={logoDark}
-            class={`${style.logo} ${darkMode ? style.visible : style.hidden}`}
-            alt="Dark Logo"
-          />
-        </div>
+      <Link href="/">
+        <div class={style.left}>
+          <div class={style.logoContainer}>
+            <img
+              src={logoLight}
+              class={`${style.logo} ${
+                !darkMode ? style.visible : style.hidden
+              }`}
+              alt="Light Logo"
+            />
+            <img
+              src={logoDark}
+              class={`${style.logo} ${darkMode ? style.visible : style.hidden}`}
+              alt="Dark Logo"
+            />
+          </div>
 
-        <div class={style.name}>
-          <span>Kris</span>
-          <span>Frasheri</span>
+          <div class={style.name}>
+            <span>Kris</span>
+            <span>Frasheri</span>
+          </div>
         </div>
-      </div>
+      </Link>
 
       <div class={style.right}>
         <div class={style.links}>
           {tabs.map((tab, index) => (
             <>
-              <Link href={tab.path}>
+              <Link href={tab.path} onClick={() => setMenuOpen(false)}>
                 <span
                   key={tab.label}
                   class={`${style.link} ${
@@ -83,7 +89,54 @@ export default function Navbar() {
         ) : (
           <LightIcon class={style.toggle} onClick={toggleDarkMode} />
         )}
+        <button
+          class={style.hamburger}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <motion.div
+            class={style.bar}
+            animate={menuOpen ? { rotate: 45, y: 9 } : { rotate: 0, y: 0 }}
+          />
+          <motion.div
+            class={style.bar}
+            animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
+          />
+          <motion.div
+            class={style.bar}
+            animate={menuOpen ? { rotate: -45, y: -9 } : { rotate: 0, y: 0 }}
+          />
+        </button>
       </div>
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            class={style.mobileMenu}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "fit-content", opacity: 1 }}
+            exit  ={{ height: 0, opacity: 0 }}
+            transition={{ type: "tween", duration: 0.3 }}
+          >
+            <div class={style.mobileLinks}>
+              {tabs.map(tab => (
+                <Link href={tab.path} onClick={() => setMenuOpen(false)}>
+                  <span
+                    key={tab.label}
+                    class={`${style.link} ${location === tab.path ? style.active : ""}`}
+                  >
+                    {tab.label}
+                  </span>
+                </Link>
+              ))}
+            </div>
+            <div class={style.mobileToggle}>
+              {!darkMode
+                ? <DarkIcon  onClick={toggleDarkMode} />
+                : <LightIcon onClick={toggleDarkMode} />
+              }
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

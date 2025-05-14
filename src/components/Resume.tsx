@@ -1,4 +1,6 @@
 import style from "../styles/Resume.module.css";
+import { motion } from "framer-motion";
+
 import uwCS from "../assets/resume/uwCS.png";
 import uwLogo from "../assets/resume/uwLogo.png";
 import aiLogo from "../assets/resume/aiLab.jpg";
@@ -8,6 +10,21 @@ import imagine from "../assets/resume/imagineLogo.jpeg";
 import dematic from "../assets/resume/dematic.jpg";
 import meta from "../assets/resume/metaAi.png";
 import sandvine from "../assets/resume/sandvine.png";
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      delayChildren: 0.1,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
 
 type ResumeCardProps = {
   title: string;
@@ -19,8 +36,10 @@ type ResumeCardProps = {
 
 function ResumeCard({ title, org, dates, logo, bullets }: ResumeCardProps) {
   return (
-    <div class={style.card}>
-      <h3 class={style.title}>{title}</h3>
+    <motion.div
+      class={style.card}
+      variants={cardVariants}
+    >      <h3 class={style.title}>{title}</h3>
       <div class={style.subheading}>
         <span class={style.org}>{org}</span>
         <div class={style.dates}>
@@ -36,9 +55,6 @@ function ResumeCard({ title, org, dates, logo, bullets }: ResumeCardProps) {
           </div>
         ) : null}
         <ul class={style.bullets}>
-          {/* {bullets.map((text) => (
-            <li>{text}</li>
-          ))} */}
           <ul class={style.bullets}>
             {bullets.map((item, index) =>
               typeof item === "string" ? (
@@ -54,14 +70,18 @@ function ResumeCard({ title, org, dates, logo, bullets }: ResumeCardProps) {
           </ul>
         </ul>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 export default function Resume() {
   return (
-    <div class={style.body}>
-      <section class={style.section}>
+    <motion.div
+      class={style.body}
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >      <section class={style.section}>
         <h2 class={style.sectionTitle}>EXPERIENCE</h2>
         <ResumeCard
           title="Sessional Lecturer"
@@ -282,6 +302,6 @@ export default function Resume() {
           ]}
         />
       </section>
-    </div>
+    </motion.div>
   );
 }

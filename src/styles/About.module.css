@@ -15,8 +15,6 @@
   flex: 2;
   display: flex;
   flex-direction: column;
-  /* gap: 1.5rem; */
-  /* max-width: 1600px; */
 }
 
 .name {
@@ -55,28 +53,26 @@
 }
 
 .imageContainer {
-  --angle: 135deg;
-  position: relative;
   border-radius: 50%;
   padding: 10px;
-  background: linear-gradient(
-    var(--angle),
-    var(--pop2-color),
-    var(--pop1-color)
-  );
+  background: linear-gradient(135deg, var(--pop2-color), var(--pop1-color));
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25),
     inset 0 2px 6px rgba(255, 255, 255, 0.2);
+  perspective: 800px;
+  transform-style: preserve-3d;
+
   display: flex;
   justify-content: center;
   align-items: center;
-
-  perspective: 800px;
-  will-change: transform, background;
-  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), --angle 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.imageContainer:hover {
-  transform: scale(1.13);
+.profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--secondary-color);
+  pointer-events: none;
 }
 
 .imageContainer img {
@@ -102,20 +98,17 @@
 
 .degrees p {
   margin: 0;
-  text-align: left;
+  text-align: inherit;
   font-weight: bold;
   font-size: clamp(1.2rem, 2.3vw, 1.7rem);
   white-space: nowrap;
 }
 
-.jobTitle {
-  color: var(--pop1-color);
-}
-
 .jobTitle p {
+  color: var(--pop1-color);
   margin: 0;
   font-weight: bold;
-  text-align: left;
+  text-align: inherit;
   font-size: clamp(1.2rem, 2.3vw, 1.7rem);
   white-space: nowrap;
 }
@@ -127,6 +120,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+  text-align: inherit;
   gap: 2vh;
 }
 
@@ -191,8 +185,7 @@
   transition: color 0s ease;
 }
 
-
-/* @media (max-width: 768px) {
+@media (max-width: 600px) {
   .body {
     flex-direction: column;
     align-items: center;
@@ -200,38 +193,45 @@
     gap: 1.5rem;
   }
 
-  .introBody {
-    order: 2;
-    width: 100%;
-  }
-
-  .quickSummary {
-    order: 1;
+  .profileSummary {
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     max-width: 100%;
-    align-items: center;
+    gap: 0rem;
+  }
+
+  .imageContainer {
+    width: 80vw;
+    height: 80vw;
+    max-width: 300px;
+    max-height: 300px;
+  }
+
+  .imageContainer img {
+    width: 100%;
+    height: 100%;
   }
 
   .infoBox {
     align-items: center;
-  }
-
-  .degrees p,
-  .jobTitle p {
     text-align: center;
+    gap: 1rem;
+    width: 90%;
+    margin-top: 1rem;
   }
 
-  .links {
-    align-items: center;
+  .introBody {
+    width: 100%;
+    padding: 0 1rem;
   }
+
   .name {
     font-size: 2.5rem;
-    text-align: center;
   }
 
   .titles {
-    font-size: 1.25rem;
-    text-align: center;
+    font-size: 1.3rem;
   }
 
   .description h1 {
@@ -240,18 +240,16 @@
 
   .description p {
     font-size: 1rem;
-  }
-  .imageContainer {
-    width: 200px;
-    height: 200px;
-  }
-  .linkItem {
-    padding: 0.5rem 0;
+    line-height: 1.5;
   }
 
-  .icon {
-    width: 1.75rem;
-    height: 1.75rem;
+  .links {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
   }
 
-} */
+  .links span {
+    display: none;
+  }
+}

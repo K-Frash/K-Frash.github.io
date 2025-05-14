@@ -1,56 +1,114 @@
 import style from "../styles/About.module.css";
-import { useEffect, useRef } from "preact/hooks";
-
+import { useState, useEffect, useRef } from "preact/hooks";
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  useSpring,
+  animate,
+} from "framer-motion";
 import { GitHubIcon, LinkedInIcon, EmailIcon } from "./icons";
 import profileImg from "../assets/about/profile.jpg";
 
 export default function About() {
   const imageRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const rotationIntensity = 8;
+
+  // Quick way to set up style transformation on mouse events
+  const flipOffset = useRef(0);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const z = useMotionValue(0);
+  const angleNum = useMotionValue(135);
+  const imgScale = useMotionValue(1);
+
+  const springConfig = { stiffness: 200, damping: 25 };
+  const smoothX = useSpring(x, springConfig);
+  const smoothY = useSpring(y, springConfig);
+  const smoothAngle = useSpring(angleNum, springConfig); // unused for now, need to fix snapping gradient issue
+  const smoothScale = useSpring(imgScale, springConfig);
+
+  const rotateX = useTransform(smoothY, (py) => -py / rotationIntensity);
+  const rotateY = useTransform(smoothX, (px) => (px / rotationIntensity));
+  const rotateZ = useTransform(z, (z) => z);
+  const updateScale = useTransform(smoothScale, (sval) => sval);
+  const gradient = useTransform(
+    angleNum,
+    (deg) => `linear-gradient(${deg}deg, var(--pop2-color), var(--pop1-color))`
+  );
 
   useEffect(() => {
-    const container = imageRef.current!;
-    const rotationStr = 10;
-    // if (!container) return;
-
-    function handleMouseMove(e: MouseEvent) {
-      const rect = container.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-
-      const rotateX = (-y / rotationStr).toFixed(2);
-      const rotateY = (x / rotationStr).toFixed(2);
-      const tilt = `scale(1.05) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-      container.style.transform = tilt;
-
-      const angleRad = Math.atan2(y, x);
-      const angleDeg = (angleRad * 180) / Math.PI;
-      container.style.setProperty("--angle", `${angleDeg + 90}deg`);
-    }
-
-    function reset() {
-      container.style.transform = "scale(1) rotateX(0deg) rotateY(0deg)";
-      container.style.setProperty("--angle", "135deg");
-    }
-
-    container.addEventListener("mousemove", handleMouseMove);
-    container.addEventListener("mouseleave", reset);
-
-    return () => {
-      container.removeEventListener("mousemove", handleMouseMove);
-      container.removeEventListener("mouseleave", reset);
-    };
+    const query = window.matchMedia("(max-width: 600px)");
+    const update = () => setIsMobile(query.matches);
+    query.addEventListener("change", update);
+    update();
+    return () => query.removeEventListener("change", update);
   }, []);
+
+  function handleMouseEnter(e: PointerEvent) {
+    if (isMobile || !imageRef.current) return;
+    const { left, top, width, height } =
+      imageRef.current.getBoundingClientRect();
+    const px = e.clientX - left - width / 2;
+    const py = e.clientY - top - height / 2;
+    x.set(px + flipOffset.current);
+    y.set(py);
+    imgScale.set(1.1);
+    angleNum.set(Math.atan2(py, px) * (180 / Math.PI) + 90);
+  }
+
+  function handleMouseExit() {
+    x.set(flipOffset.current);
+    y.set(0);
+    angleNum.set(135);
+    imgScale.set(1);
+  }
+
+  function flipCard() {
+    const x_temp = x.get();
+    const scale_temp = imgScale.get();
+    const delta = Math.random() > 0.5 ? 360 * rotationIntensity : 180 * rotationIntensity;
+    const flipDuration = 0.5
+    animate(z, [0, 360], {
+      duration: flipDuration,
+      ease: "easeInOut",
+    });
+    animate(x, [x_temp, x_temp + delta], {
+      duration: flipDuration,
+      ease: "easeInOut",
+      onComplete: () => { flipOffset.current += delta; }
+    });
+    animate(imgScale, [1, 1.55], {
+      duration: flipDuration / 2,
+      ease: "easeInOut",
+      onComplete: () => imgScale.set(scale_temp),
+    });
+  }
 
   return (
     <div class={style.body}>
       <div class={style.profileSummary}>
-        <div class={style.imageContainer} ref={imageRef}>
+        <motion.div
+          ref={imageRef}
+          class={style.imageContainer}
+          onClick={flipCard}
+          onPointerMove={isMobile ? ()=>{} : handleMouseEnter}
+          onPointerLeave={isMobile ? ()=>{} : handleMouseExit}
+          style={{
+            rotateX: rotateX,
+            rotateY: rotateY,
+            rotateZ: rotateZ,
+            scale: updateScale,
+            background: gradient,
+          }}
+        >
           <img
             src={profileImg}
             alt="Kris Frasheri"
             class={style.profileImage}
           />
-        </div>
+        </motion.div>
 
         <div class={style.infoBox}>
           <div class={style.degrees}>
