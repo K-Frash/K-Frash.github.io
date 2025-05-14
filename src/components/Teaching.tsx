@@ -9,20 +9,40 @@ interface CourseMeta {
 }
 
 const courses: CourseMeta[] = [
-//   {
-//     id: "cs115",
-//     title: "Introduction To Computer Science 1",
-//     term: "Winter 2024",
-//   },
-//   {
-//     id: "cs116",
-//     title: "Introduction To Computer Science 1",
-//     term: "W25",
-//   },
+  {
+    id: "cs116",
+    title: "Introduction to Computer Science 2 (Python)",
+    term: "Winter 2025",
+  },
+  {
+    id: "cs241",
+    title: "Foundations of Sequential Programs",
+    term: "Winter 2024",
+  },
+  {
+    id: "cs115",
+    title: "Introduction to Computer Science 1 (Scheme)",
+    term: "Winter 2024",
+  },
+  {
+    id: "cs349",
+    title: "User Interfaces",
+    term: "Spring 2024",
+  },
+  {
+    id: "cs245",
+    title: "Logic and Computation",
+    term: "Spring 2023",
+  },
   {
     id: "cs246",
     title: "Object-Oriented Programming",
     term: "Winter 2023",
+  },
+  {
+    id: "cs246e",
+    title: "(Enriched) Object-Oriented Programming",
+    term: "Fall 2022",
   },
 ];
 
@@ -33,7 +53,6 @@ const cardVariants = {
       ease: "easeInOut",
     },
     boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
-    border: "10px solid rgba(255, 255, 255, 0.5)",
   },
 };
 
@@ -50,7 +69,8 @@ export default function Teaching() {
 
       <p class={style.titleText}>
         Teaching is one of my deepest passions, below are the courses I've
-        taught at the University of Waterloo. Click any tile to dive into that semester's content. (Content under construction, but stay tuned!)
+        taught at the University of Waterloo. Click any tile to dive into that
+        semester's content. (Content under construction, but stay tuned!)
       </p>
 
       <div class={style.container}>
@@ -62,8 +82,10 @@ export default function Teaching() {
               variants={cardVariants}
               whileHover="hover"
             >
-              <div class={style.title}>{c.title}</div>
-              <div class={style.term}>{c.term}</div>
+              {/* <div class={style[c.id]}> */}
+                <div class={style.title}>{c.title}</div>
+                <div class={style.term}>{c.term}</div>
+              {/* </div> */}
             </motion.div>
           </Link>
         ))}

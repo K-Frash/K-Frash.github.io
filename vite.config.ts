@@ -1,9 +1,10 @@
 import { defineConfig } from "vite";
 import preact from "@preact/preset-vite";
+import { vitePluginMdToHTML } from 'vite-plugin-md-to-html';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [preact()],
+  plugins: [preact(), vitePluginMdToHTML()],
   base: "/",
   resolve: {
     alias: {
