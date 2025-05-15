@@ -113,26 +113,25 @@ export default function Navbar() {
             class={style.mobileMenu}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "fit-content", opacity: 1 }}
-            exit  ={{ height: 0, opacity: 0 }}
+            exit={{ height: 0, opacity: 0 }}
             transition={{ type: "tween", duration: 0.3 }}
           >
             <div class={style.mobileLinks}>
-              {tabs.map(tab => (
+              {tabs.map((tab) => (
                 <Link href={tab.path} onClick={() => setMenuOpen(false)}>
                   <span
                     key={tab.label}
-                    class={`${style.link} ${location === tab.path ? style.active : ""}`}
+                    class={`${style.link} ${
+                      location === tab.path ? style.active : ""
+                    }`}
                   >
                     {tab.label}
                   </span>
                 </Link>
               ))}
-            </div>
-            <div class={style.mobileToggle}>
-              {!darkMode
-                ? <DarkIcon  onClick={toggleDarkMode} />
-                : <LightIcon onClick={toggleDarkMode} />
-              }
+              <div class={style.mobileToggle} onClick={toggleDarkMode}>
+                {!darkMode ? <DarkIcon /> : <LightIcon />}
+              </div>
             </div>
           </motion.div>
         )}

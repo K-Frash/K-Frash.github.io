@@ -101,7 +101,7 @@
 
 .hamburger {
   display: none;
-  border: 0.2rem solid var(--primary-color);
+  border: 0.2rem solid var(--pop1-color);
   background-color: var(--tertiary-color);
   border-radius: 10%;
   flex-direction: column;
@@ -116,13 +116,12 @@
 .bar {
   width: 100%;
   height: 0.25rem;
-  background: var(--primary-color);
+  background: var(--pop1-color);
 }
 
 .mobileMenu {
   position: absolute;
   top: 4rem;
-  padding: 0.5rem 2rem;
   margin-right: 2rem;
   right: 0;
   width: fit-content;
@@ -132,16 +131,44 @@
   display: none;
   flex-direction: column;
   align-items: center;
+  border: 0.2rem solid var(--pop1-color);
+  border-radius: 5%;
 }
 .mobileLinks {
-  margin-top: 2rem;
   display: none;
   flex-direction: column;
-  gap: 1.5rem;
   font-size: 2rem;
 }
-.mobileToggle {
-  margin-bottom: 2rem 0;
+
+.mobileLinks a {
+  padding: 1rem 2rem;
+  background-color: var(--tertiary-color)
+}
+
+.mobileLinks a:hover{
+  background-color: var(--secondary-color);
+}
+
+.mobileToggle{
+  padding: 1rem 2rem;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  height: 100%;
+  width: 100%;
+  /* margin-bottom: 2rem 0; */
+  background-color: var(--tertiary-color);
+}
+
+.mobileToggle:hover{
+  background-color: var(--secondary-color);
+}
+
+.mobileToggle svg{
+  /* display: none; */
+  height: 2rem;
+  width: 2rem;
+  /* margin-bottom: 2rem 0; */
 }
 
 @media (max-width: 1000px) {
@@ -152,7 +179,8 @@
 
   .hamburger,
   .mobileMenu,
-  .mobileLinks
+  .mobileLinks,
+  .mobileToggle
   {
     display: flex;
   }

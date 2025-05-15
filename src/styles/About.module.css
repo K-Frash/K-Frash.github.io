@@ -185,6 +185,12 @@
   transition: color 0s ease;
 }
 
+.wave {
+  font-size: inherit;
+  display: inline-block;
+  transform-origin: bottom center;
+}
+
 @media (max-width: 600px) {
   .body {
     flex-direction: column;

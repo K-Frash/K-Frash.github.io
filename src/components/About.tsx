@@ -26,11 +26,11 @@ export default function About() {
   const springConfig = { stiffness: 200, damping: 25 };
   const smoothX = useSpring(x, springConfig);
   const smoothY = useSpring(y, springConfig);
-  const smoothAngle = useSpring(angleNum, springConfig); // unused for now, need to fix snapping gradient issue
+  // const smoothAngle = useSpring(angleNum, springConfig); // unused for now, need to fix snapping gradient issue
   const smoothScale = useSpring(imgScale, springConfig);
 
   const rotateX = useTransform(smoothY, (py) => -py / rotationIntensity);
-  const rotateY = useTransform(smoothX, (px) => (px / rotationIntensity));
+  const rotateY = useTransform(smoothX, (px) => px / rotationIntensity);
   const rotateZ = useTransform(z, (z) => z);
   const updateScale = useTransform(smoothScale, (sval) => sval);
   const gradient = useTransform(
@@ -68,8 +68,9 @@ export default function About() {
   function flipCard() {
     const x_temp = x.get();
     const scale_temp = imgScale.get();
-    const delta = Math.random() > 0.5 ? 360 * rotationIntensity : 180 * rotationIntensity;
-    const flipDuration = 0.5
+    const delta =
+      Math.random() > 0.5 ? 360 * rotationIntensity : 180 * rotationIntensity;
+    const flipDuration = 0.5;
     animate(z, [0, 360], {
       duration: flipDuration,
       ease: "easeInOut",
@@ -77,7 +78,9 @@ export default function About() {
     animate(x, [x_temp, x_temp + delta], {
       duration: flipDuration,
       ease: "easeInOut",
-      onComplete: () => { flipOffset.current += delta; }
+      onComplete: () => {
+        flipOffset.current += delta;
+      },
     });
     animate(imgScale, [1, 1.55], {
       duration: flipDuration / 2,
@@ -90,30 +93,42 @@ export default function About() {
     <div class={style.body}>
       <div class={style.profileSummary}>
         <motion.div
-          ref={imageRef}
-          class={style.imageContainer}
-          onClick={flipCard}
-          onPointerMove={isMobile ? ()=>{} : handleMouseEnter}
-          onPointerLeave={isMobile ? ()=>{} : handleMouseExit}
-          style={{
-            rotateX: rotateX,
-            rotateY: rotateY,
-            rotateZ: rotateZ,
-            scale: updateScale,
-            background: gradient,
-          }}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+                duration: 0.4,
+                scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
+            }}
         >
-          <img
-            src={profileImg}
-            alt="Kris Frasheri"
-            class={style.profileImage}
-          />
+          <motion.div
+            ref={imageRef}
+            class={style.imageContainer}
+            onClick={flipCard}
+            onPointerMove={isMobile ? () => {} : handleMouseEnter}
+            onPointerLeave={isMobile ? () => {} : handleMouseExit}
+            style={{
+              rotateX: rotateX,
+              rotateY: rotateY,
+              rotateZ: rotateZ,
+              scale: updateScale,
+              background: gradient,
+            }}
+          >
+            <motion.img
+              src={profileImg}
+              alt="Kris Frasheri"
+              class={style.profileImage}
+              initial={ { scale: 0.75} }
+              animate={ { scale: 1}}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            />
+          </motion.div>
         </motion.div>
 
         <div class={style.infoBox}>
           <div class={style.degrees}>
             <p>Computer Science, M.Math.</p>
-            <p>Computer Science, B.Cs.</p>
+            <p>Computer Science, B.CS.</p>
           </div>
           <div class={style.jobTitle}>
             <p>Computer Science Lecturer @</p>
@@ -158,7 +173,20 @@ export default function About() {
           HCI Researcher | AI Engineer | Graphics Engineer | Educator
         </div>
         <div class={style.description}>
-          <h1>Hello there! 👋</h1>
+          <h1>
+            Hello there!
+            <motion.span
+              class={style.wave}
+              initial={{ scale: 0  }}
+              animate={{ scale: 1 }}
+              transition={{
+                duration: 0.2,
+                scale: { type: "spring", visualDuration: 0.2, bounce: 0.75, delay: 1},
+            }}
+            >
+              👋
+            </motion.span>
+          </h1>
           <p>
             I'm Kris Frasheri, an AI and HCI researcher who recently completed
             my Master of Mathematics in Computer Science at the University of
