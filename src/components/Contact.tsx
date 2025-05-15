@@ -1,5 +1,4 @@
-// src/components/Contact.tsx
-import { useState, useEffect, useRef } from "preact/hooks";
+import { useRef } from "preact/hooks";
 import { motion } from "framer-motion";
 import style from "../styles/Contact.module.css";
 import { GitHubIcon, LinkedInIcon, EmailIcon } from "./icons";
