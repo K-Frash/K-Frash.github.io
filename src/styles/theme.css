@@ -1,38 +1,38 @@
 /* Quick reset of vanilla DOM */
 * {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    box-sizing: border-box;
-  }
-  
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
 body,
 html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overscroll-behavior: none;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overscroll-behavior: none;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 /* Light Mode Palette */
 :root {
-    --primary-color: #1A1A1A;
-    --secondary-color: #F7FBFC;
-    --tertiary-color: #D6E6F2;
-    --pop1-color: #27548A;
-    --pop2-color: #D6E6F2;
-  }
+  --primary-color: #1a1a1a;
+  --secondary-color: #f7fbfc;
+  --tertiary-color: #d6e6f2;
+  --pop1-color: #27548a;
+  --pop2-color: #d6e6f2;
+}
 
 /* Dark Mode Palette */
 [data-theme="dark"] {
-    --primary-color: #E1E2E4;
-    /* --secondary-color: #181A21; */
-    --secondary-color: #18253A;
-    /* --tertiary-color: #18253A; */
-    --tertiary-color: #223950;
-    --pop1-color: #DECA32;
-    --pop2-color: #DE5A32;
+  --primary-color: #e1e2e4;
+  /* --secondary-color: #181A21; */
+  --secondary-color: #18253a;
+  /* --tertiary-color: #18253A; */
+  --tertiary-color: #223950;
+  --pop1-color: #deca32;
+  --pop2-color: #de5a32;
 }
 
 html, body,
@@ -43,6 +43,11 @@ button, input, textarea, img, li{
   transition-duration: 0.3s;
   transition-timing-function: ease;  
 }
+
+/* html,
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+} */
 
 .disable-transitions * {
   transition: none !important;

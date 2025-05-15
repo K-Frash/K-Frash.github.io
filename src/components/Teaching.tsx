@@ -39,11 +39,11 @@ const courses: CourseMeta[] = [
     title: "Object-Oriented Programming",
     term: "Winter 2023",
   },
-  {
-    id: "cs246e",
-    title: "(Enriched) Object-Oriented Programming",
-    term: "Fall 2022",
-  },
+  // {
+  //   id: "cs246e",
+  //   title: "(Enriched) Object-Oriented Programming",
+  //   term: "Fall 2022",
+  // },
 ];
 
 const cardVariants = {
