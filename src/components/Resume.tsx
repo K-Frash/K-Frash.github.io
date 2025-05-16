@@ -1,10 +1,11 @@
 import style from "../styles/Resume.module.css";
 import { motion } from "framer-motion";
+import { PDFIcon } from "../components/icons";
 
 import uwCS from "../assets/resume/uwCS.png";
 import uwLogo from "../assets/resume/uwLogo.png";
 import aiLogo from "../assets/resume/aiLab.jpg";
-import cra from "../assets/resume/CRA.png"
+import cra from "../assets/resume/CRA.png";
 import reebee from "../assets/resume/reebeeFlippLogo.png";
 import imagine from "../assets/resume/imagineLogo.jpeg";
 import dematic from "../assets/resume/dematic.jpg";
@@ -36,10 +37,9 @@ type ResumeCardProps = {
 
 function ResumeCard({ title, org, dates, logo, bullets }: ResumeCardProps) {
   return (
-    <motion.div
-      class={style.card}
-      variants={cardVariants}
-    >      <h3 class={style.title}>{title}</h3>
+    <motion.div class={style.card} variants={cardVariants}>
+      {" "}
+      <h3 class={style.title}>{title}</h3>
       <div class={style.subheading}>
         <span class={style.org}>{org}</span>
         <div class={style.dates}>
@@ -81,7 +81,20 @@ export default function Resume() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-    >      <section class={style.section}>
+    >
+      <div class={style.downloadContainer}>
+        <div class={style.promptText}>Want a quick summary? →</div>
+        <a
+          href="/Kris_Frasheri_Resume.pdf"
+          download
+          target="_blank"
+          class={style.downloadButton}
+        >
+          <PDFIcon class={style.downloadIcon} />
+          Download Resume
+        </a>
+      </div>
+      <section class={style.section}>
         <h2 class={style.sectionTitle}>EXPERIENCE</h2>
         <ResumeCard
           title="Sessional Lecturer"
@@ -132,7 +145,7 @@ export default function Resume() {
           bullets={[
             "Guided two cohorts of 3-4 undergraduate students through research projects in Human-Computer Interaction and AI development.",
             "Focused on designing tools to observe how LLM-personas can assist users with value-sensitive decision-making tasks, with a focus on value-sensitive design (VSD).",
-            "Completed formal mentor training provided by the Computing Research Association (CRA), emphasizing culturally responsive mentorship practices."
+            "Completed formal mentor training provided by the Computing Research Association (CRA), emphasizing culturally responsive mentorship practices.",
           ]}
         />
 

@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import logoLight from "../assets/navbar/Logo_Rd_Light.png";
 import logoDark from "../assets/navbar/Logo_Rd_Dark.png";
 
-import { DarkIcon, LightIcon } from "./icons";
+import ThemeToggle from "./ThemeToggle";
 
 const tabs = [
   { label: "ABOUT", path: "/" },
@@ -21,40 +21,29 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [location] = useLocation();
 
-  function toggleDarkMode(): void {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    document.documentElement.setAttribute(
-      "data-theme",
-      newMode ? "dark" : "light"
-    );
-    localStorage.setItem("theme", newMode ? "dark" : "light");
-  }
-
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    const themePref = window.matchMedia("(prefers-color-scheme: dark)");
-    const loadMode = savedTheme ?? (themePref ? "dark" : "light");
-    document.documentElement.setAttribute("data-theme", loadMode);
-    setDarkMode(loadMode === "dark");
-    document.documentElement.classList.remove("disable-transitions");
+    const savedTheme = localStorage.getItem("theme") === "dark";
+    setDarkMode(savedTheme);
+
+    // Should listen to the new viewport theme toggle from ThemeToggle without blowing up the event Q
+    const handler = (e: CustomEvent) => {
+      setDarkMode(e.detail);
+    };
+    document.addEventListener("theme-change", handler as EventListener);
+    return () => {
+      document.removeEventListener("theme-change", handler as EventListener);
+    };
   }, []);
+
   return (
     <nav class={style.nav}>
       <Link href="/">
         <div class={style.left}>
           <div class={style.logoContainer}>
             <img
-              src={logoLight}
-              class={`${style.logo} ${
-                !darkMode ? style.visible : style.hidden
-              }`}
-              alt="Light Logo"
-            />
-            <img
-              src={logoDark}
-              class={`${style.logo} ${darkMode ? style.visible : style.hidden}`}
-              alt="Dark Logo"
+              src={!darkMode ? logoLight : logoDark}
+              class={style.logo}
+              alt="Kris Logo"
             />
           </div>
 
@@ -84,11 +73,10 @@ export default function Navbar() {
           ))}
         </div>
 
-        {!darkMode ? (
-          <DarkIcon class={style.toggle} onClick={toggleDarkMode} />
-        ) : (
-          <LightIcon class={style.toggle} onClick={toggleDarkMode} />
-        )}
+        <div class={style.toggle}>
+          <ThemeToggle />
+        </div>
+
         <button
           class={style.hamburger}
           onClick={() => setMenuOpen((open) => !open)}
@@ -129,8 +117,8 @@ export default function Navbar() {
                   </span>
                 </Link>
               ))}
-              <div class={style.mobileToggle} onClick={toggleDarkMode}>
-                {!darkMode ? <DarkIcon /> : <LightIcon />}
+              <div class={style.mobileToggle}>
+                <ThemeToggle />
               </div>
             </div>
           </motion.div>
