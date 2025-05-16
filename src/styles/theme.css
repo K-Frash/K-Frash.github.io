@@ -22,6 +22,9 @@ html {
   --tertiary-color: #d6e6f2;
   --pop1-color: #27548a;
   --pop2-color: #d6e6f2;
+
+  --cx: 0;
+  --cy: 0;
 }
 
 /* Dark Mode Palette */
@@ -31,22 +34,17 @@ html {
   --secondary-color: #18253a;
   /* --tertiary-color: #18253A; */
   --tertiary-color: #223950;
-  --pop1-color: #deca32;
+  --pop1-color: #ffd60a;
   --pop2-color: #de5a32;
 }
 
-html, body,
+/* html, body,
 nav, header, footer, main,
 div, span, p, a, h1, h2, h3, h4, h5, h6,
 button, input, textarea, img, li{
   transition-property: background-color, color, border-color, filter;
   transition-duration: 0.3s;
   transition-timing-function: ease;  
-}
-
-/* html,
-body {
-  transition: background-color 0.3s ease, color 0.3s ease;
 } */
 
 .disable-transitions * {
@@ -56,4 +54,24 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* Great help from https://theme-toggle.rdsx.dev/ for the theme toggling! */
+::view-transition-group(root) {
+  animation-timing-function: ease-in-out;
+}
+
+::view-transition-old(root) {
+  animation: none;
+}
+
+::view-transition-new(root) {
+  clip-path: circle(0 at var(--cx) var(--cy));
+  animation: theme-reveal 1s both;
+}
+
+@keyframes theme-reveal {
+  to {
+    clip-path: circle(200vmax at var(--cx) var(--cy));
+  }
 }
