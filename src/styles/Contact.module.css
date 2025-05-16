@@ -94,8 +94,12 @@
 }
 
 @media (max-width: 600px) {
+  .body{
+    padding: 0;
+  }
+
   .container {
-    padding: 1.5rem;
+    background-color: var(--secondary-color);
   }
 
   .heading {

@@ -112,6 +112,41 @@
   position: relative;
 }
 
+.downloadContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.promptText{
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+}
+
+.downloadButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--pop1-color);
+  color: var(--tertiary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.downloadButton:hover {
+  opacity: 0.85;
+}
+
+.downloadIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 @media (max-width: 600px) {
   .body {
     padding: 0.5rem;
