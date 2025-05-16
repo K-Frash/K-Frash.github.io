@@ -39,20 +39,23 @@ const courses: CourseMeta[] = [
     title: "Object-Oriented Programming",
     term: "Winter 2023",
   },
-  // {
-  //   id: "cs246e",
-  //   title: "(Enriched) Object-Oriented Programming",
-  //   term: "Fall 2022",
-  // },
 ];
 
 const cardVariants = {
+  initial: {
+    scale: 1,
+    boxShadow: "0 0px 0px rgba(0,0,0,0.15)",
+    border: "solid 0px var(--course-color1)",
+  },
   hover: {
     scale: 1.05,
-    transition: {
-      ease: "easeInOut",
-    },
     boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
+    border: "solid 10px var(--course-color1)",
+    transition: {
+      scale: { ease: "easeInOut", duration: 0.2 },
+      boxShadow: { ease: "easeInOut", duration: 0.2 },
+      border: { ease: "easeInOut", duration: 0.2 },
+    },
   },
 };
 
@@ -77,14 +80,15 @@ export default function Teaching() {
         {courses.map((c) => (
           <Link href={`/teaching/${c.id}`} class={style.link} key={c.id}>
             <motion.div
+              initial="initial"
               layoutId={`course-${c.id}`}
-              class={`${style.card} ${style[c.id]}`}
+              class={`${style.card} ${c.id}`}
               variants={cardVariants}
               whileHover="hover"
             >
               {/* <div class={style[c.id]}> */}
-                <div class={style.title}>{c.title}</div>
-                <div class={style.term}>{c.term}</div>
+              <div class={style.title}>{c.title}</div>
+              <div class={style.term}>{c.term}</div>
               {/* </div> */}
             </motion.div>
           </Link>

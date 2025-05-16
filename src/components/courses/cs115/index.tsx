@@ -6,12 +6,12 @@ import note1 from "./notes/lesson1.md?raw";
 
 const renderNotes: NotesProps[] = [{ note: note1 }];
 
-export default function CS246() {
+export default function CS115() {
   return (
-    <div class={`${style.page} cs246`}>
+    <div class={`${style.page} cs115`}>
       <div class={style.tableOfContents}>
-        <h1>CS246</h1>
-        <h1>Object-Oriented Programming</h1>
+        <h1>CS115</h1>
+        <h1>Introduction to Computer Science 1</h1>
         <footer class={style.footer}>
           <Link href="/teaching">← Back to all courses</Link>
         </footer>

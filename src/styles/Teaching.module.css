@@ -32,8 +32,9 @@
 }
 
 .card {
-  padding: 1rem;
-  /* border: 5px solid rgba(255, 255, 255, 0.5); */
+  background: var(--course-bg);
+  border: solid 0px var(--course-color1);
+  padding: 5px;
   position: relative;
   aspect-ratio: 1;
   display: flex;
@@ -45,7 +46,7 @@
   text-align: center;
   user-select: none;
   overflow: hidden;
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s border 0.2s;
 }
 
 .title {
@@ -57,48 +58,4 @@
 .term {
   font-size: 0.9rem;
   opacity: 0.85;
-}
-
-/* Course-specific backgrounds via the `id` */
-.cs115 {
-  background:
-  linear-gradient(127deg, rgba(251, 188, 4, 1), rgba(251, 188, 4, 0.2) 70.71%),
-  linear-gradient(226deg, rgba(251, 188, 4, 1), rgba(251, 188, 4, 0.2) 70.71%),
-  linear-gradient(336deg, rgba(227, 116, 0, 1), rgba(227, 116, 0, 0.2) 70.71%);
-}
-.cs116 {
-  background:
-  linear-gradient(127deg, rgba(66, 133, 244, 1), rgba(66, 133, 244, 0.2) 70.71%),
-  linear-gradient(226deg, rgba(66, 133, 244, 1), rgba(66, 133, 244, 0.2) 70.71%),
-  linear-gradient(336deg, rgba(126, 139, 251, 1), rgba(126, 139, 251, 0.2) 70.71%);
-}
-.cs241 {
-  background:
-  linear-gradient(127deg, rgba(234, 67, 53, 1), rgba(234, 67, 53, 0.2) 70.71%),
-  linear-gradient(226deg, rgba(234, 67, 53, 1), rgba(234, 67, 53, 0.2) 70.71%),
-  linear-gradient(336deg, rgba(165, 14, 14, 1), rgba(165, 14, 14, 0.2) 70.71%);
-}
-.cs245 {
-  background: 
-  linear-gradient(127deg, rgba(237, 85, 71, 1), rgba(237, 85, 71, 0.2) 70.71%),
-  linear-gradient(226deg, rgba(237, 85, 71, 1), rgba(237, 85, 71, 0.2) 70.71%),
-  linear-gradient(336deg, rgba(146, 33, 167, 1), rgba(146, 33, 167, 0.2) 70.71%);
-}
-.cs246 {
-  background:
-  linear-gradient(127deg, rgba(178, 90, 154, 1), rgba(178, 90, 154, 0.2) 70.71%),
-  linear-gradient(226deg, rgba(178, 90, 154, 1), rgba(178, 90, 154, 0.2) 70.71%),
-  linear-gradient(336deg, rgba(101, 60, 162, 1), rgba(101, 60, 162, 0.2) 70.71%);
-}
-.cs246e {
-  background:
-  linear-gradient(127deg, rgba(0, 119, 182, 1), rgba(178, 90, 154, 0.2) 70.71%),
-  linear-gradient(226deg, rgba(0, 119, 182, 1), rgba(178, 90, 154, 0.2) 70.71%),
-  linear-gradient(336deg, rgba(3, 4, 94, 1), rgba(3, 4, 94, 0.2) 70.71%);
-}
-.cs349 {
-  background:
-  linear-gradient(127deg, rgba(52, 168, 83, 1), rgba(52, 168, 83, 0.2) 70.71%),
-  linear-gradient(226deg, rgba(52, 168, 83, 1), rgba(52, 168, 83, 0.2) 70.71%),
-  linear-gradient(336deg, rgba(13, 101, 45, 1), rgba(13, 101, 45, 0.2) 70.71%);
 }

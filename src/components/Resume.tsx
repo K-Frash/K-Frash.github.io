@@ -85,7 +85,7 @@ export default function Resume() {
       <div class={style.downloadContainer}>
         <div class={style.promptText}>Want a quick summary? →</div>
         <a
-          href="/Kris_Frasheri_Resume.pdf"
+          href="https://drive.google.com/file/d/1DS8uzsLvtL8sBARv1bSneq6zd4eWI91O/view?usp=sharing"
           download
           target="_blank"
           class={style.downloadButton}

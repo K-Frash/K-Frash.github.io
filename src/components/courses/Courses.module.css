@@ -1,0 +1,89 @@
+.page {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  align-items: stretch;
+  /* padding: 2rem; */
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  /* max-width: 1400px; */
+  /* margin: 0 auto; */
+  width: 100%;
+  overflow: hidden;
+}
+
+.tableOfContents {
+  background: var(--course-bg);
+  color: white;
+  padding: 2rem;
+  /* border-radius: 0.5rem; */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 20rem;
+  height: auto;
+  /* margin-bottom: 1.5rem; */
+}
+
+.tableOfContents h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.footer {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.content {
+  /* background: var(--tertiary-color); */
+  flex: 1;
+  padding: 1rem;
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+  overflow: scroll;
+}
+
+.content h1 {
+  font-size: 2.5rem;
+  border-bottom: 3px solid var(--course-color1);
+  padding-bottom: 0.5rem;
+  margin-top: 2rem;
+}
+.content h2 {
+  font-size: 2rem;
+  margin-top: 1.5rem;
+}
+.content h3 {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.content p,
+.content ul,
+.content ol {
+  margin: 1rem 0;
+}
+
+.content pre {
+  background: #2d2d2d;
+  color: #f8f8f2;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 4px;
+}
+.content code {
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: monospace;
+}
+
+.content blockquote {
+  border-left: 4px solid #ccc;
+  padding-left: 1rem;
+  color: #666;
+  margin: 1rem 0;
+}
