@@ -95,15 +95,6 @@ html {
   --pop2-color: #de5a32;
 }
 
-/* html, body,
-nav, header, footer, main,
-div, span, p, a, h1, h2, h3, h4, h5, h6,
-button, input, textarea, img, li{
-  transition-property: background-color, color, border-color, filter;
-  transition-duration: 0.3s;
-  transition-timing-function: ease;  
-} */
-
 .disable-transitions * {
   transition: none !important;
 }

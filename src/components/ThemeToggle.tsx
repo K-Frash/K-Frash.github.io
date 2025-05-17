@@ -28,16 +28,16 @@ export default function ThemeToggle() {
     const x = e.clientX,
       y = e.clientY;
 
-    if ((document as any).startViewTransition) {
-      document.documentElement.style.setProperty("--cx", `${x}px`);
-      document.documentElement.style.setProperty("--cy", `${y}px`);
-      (document as any).startViewTransition(() => {
-        applyTheme(!darkMode);
-      });
+    if (!document.startViewTransition) {
+      applyTheme(!darkMode);
       return;
     }
 
-    applyTheme(!darkMode);
+    document.documentElement.style.setProperty("--cx", `${x}px`);
+    document.documentElement.style.setProperty("--cy", `${y}px`);
+    (document as any).startViewTransition(() => {
+      applyTheme(!darkMode);
+    });
   }
 
   return (

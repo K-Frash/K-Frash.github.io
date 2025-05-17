@@ -306,8 +306,8 @@ export default function Resume() {
         />
         <ResumeCard
           title="University of Waterloo Teaching Assistant Award"
-          org="Ontario Undergraduate Student Alliance"
-          dates={["March 2025"]}
+          org="Cheriton School of Computer Science "
+          dates={["September 2024"]}
           logo=""
           bullets={[
             "Recognized for exceptional contributions and dedication to student learning across multiple academic terms.",

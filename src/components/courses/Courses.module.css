@@ -1,15 +1,18 @@
 .page {
   display: flex;
   flex-direction: row;
-  /* justify-content: space-between; */
   align-items: stretch;
-  /* padding: 2rem; */
   background-color: var(--secondary-color);
   color: var(--primary-color);
-  /* max-width: 1400px; */
-  /* margin: 0 auto; */
   width: 100%;
-  overflow: hidden;
+  overflow-y: none;
+}
+
+.courseHeader{
+    /* border-radius: 0.5rem; */
+    border-bottom: 3px solid white;
+    padding-bottom: 0.5rem;
+  
 }
 
 .tableOfContents {
@@ -22,6 +25,9 @@
   text-align: center;
   width: 20rem;
   height: auto;
+  overflow-y: scroll;
+  overflow-x: none;
+  word-wrap: break-word;
   /* margin-bottom: 1.5rem; */
 }
 
@@ -38,13 +44,25 @@
   margin-top: 2rem;
 }
 
+.footer a{
+  flex: 1;
+  font-size: 1rem;
+}
+
 .content {
   /* background: var(--tertiary-color); */
   flex: 1;
   padding: 1rem;
   font-family: system-ui, sans-serif;
   line-height: 1.6;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: none;
+  scroll-behavior: smooth;
+}
+
+.contentInner {
+  max-width: 1000px;
+  margin: 0 auto;        /* center your text inside the full-width scroll container */
 }
 
 .content h1 {
@@ -68,22 +86,47 @@
   margin: 1rem 0;
 }
 
-.content pre {
-  background: #2d2d2d;
-  color: #f8f8f2;
-  padding: 1rem;
-  overflow-x: auto;
-  border-radius: 4px;
-}
-.content code {
-  padding: 0.2rem 0.4rem;
-  border-radius: 3px;
-  font-family: monospace;
-}
-
 .content blockquote {
   border-left: 4px solid #ccc;
   padding-left: 1rem;
   color: #666;
   margin: 1rem 0;
+}
+
+.content a {
+  color: var(--pop1-color);
+  text-decoration: underline;
+}
+
+.tocList {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.tocList a{
+  font-size: 1.2rem;
+}
+
+.level1 {
+  font-size: 2rem;
+  margin-left: 0;
+}
+.level2 {
+  margin-left: 1rem;
+}
+.level3 {
+  margin-left: 2rem;
+}
+.level4 {
+  margin-left: 3rem;
+}
+.level5 {
+  margin-left: 4rem;
+}
+.level6 {
+  margin-left: 5rem;
 }

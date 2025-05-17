@@ -1,157 +1,151 @@
-An h1 header
-============
+# H1
+## H2
+### H3
+#### H4
+##### H5
+###### H6H6H6H6H6H6H6H6H6
 
-Paragraphs are separated by a blank line.
+# Text Decor
+Emphasis, aka italics, with *asterisks* or _underscores_.
 
-2nd paragraph. *Italic*, **bold**, and `monospace`. Itemized lists
-look like:
+Strong emphasis, aka bold, with **asterisks** or __underscores__.
 
-  * this one
-  * that one
-  * the other one
+Combined emphasis with **asterisks and _underscores_**.
 
-Note that --- not considering the asterisk --- the actual text
-content starts at 4-columns in.
+Strikethrough uses two tildes. ~~Scratch this.~~
 
-> Block quotes are
-> written like so.
->
-> They can span multiple paragraphs,
-> if you like.
+# Lists
+1. First ordered list item
+2. Another item
+⋅⋅* Unordered sub-list. 
+1. Actual numbers don't matter, just that it's a number
+⋅⋅1. Ordered sub-list
+4. And another item.
 
-Use 3 dashes for an em-dash. Use 2 dashes for ranges (ex., "it's all
-in chapters 12--14"). Three dots ... will be converted to an ellipsis.
-Unicode is supported. ☺
+⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
 
+⋅⋅⋅To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
+⋅⋅⋅Note that this line is separate, but within the same paragraph.⋅⋅
+⋅⋅⋅(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
 
+* Unordered list can use asterisks
+- Or minuses
++ Or pluses
 
-An h2 header
-------------
+# Links
+[I'm an inline-style link](https://www.google.com)
 
-Here's a numbered list:
+[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
 
- 1. first item
- 2. second item
- 3. third item
+[I'm a reference-style link][Arbitrary case-insensitive reference text]
 
-Note again how the actual text starts at 4 columns in (4 characters
-from the left side). Here's a code sample:
+[I'm a relative reference to a repository file](../blob/master/LICENSE)
 
-    # Let me re-iterate ...
-    for i in 1 .. 10 { do-something(i) }
+[You can use numbers for reference-style link definitions][1]
 
-As you probably guessed, indented 4 spaces. By the way, instead of
-indenting the block, you can use delimited blocks, if you like:
+Or leave it empty and use the [link text itself].
 
-~~~
-define foobar() {
-    print "Welcome to flavor country!";
-}
-~~~
+URLs and URLs in angle brackets will automatically get turned into links. 
+http://www.example.com or <http://www.example.com> and sometimes 
+example.com (but not on Github, for example).
 
-(which makes copying & pasting easier). You can optionally mark the
-delimited block for Pandoc to syntax highlight it:
+Some text to show that the reference links can follow later.
 
-~~~python
-import time
-# Quick, count to ten!
-for i in range(10):
-    # (but not *too* quick)
-    time.sleep(0.5)
-    print i
-~~~
+[arbitrary case-insensitive reference text]: https://www.mozilla.org
+[1]: http://slashdot.org
+[link text itself]: http://www.reddit.com
 
+# Image Embeds
+Here's our logo (hover to see the title text):
 
+Inline-style: 
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
 
-### An h3 header ###
+Reference-style: 
+![alt text][logo]
 
-Now a nested list:
+[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
 
- 1. First, get these ingredients:
+# Code Blocks
+Inline `code` has `back-ticks around` it.
 
-      * carrots
-      * celery
-      * lentils
+```javascript
+var s = "JavaScript syntax highlighting";
+alert(s);
+```
+ 
+```python
+s = "Python syntax highlighting"
+print s
+```
+ 
+```plaintext
+No language indicated, so no syntax highlighting. 
+But let's throw in a <b>tag</b>.
+```
 
- 2. Boil some water.
+# Footnotes
 
- 3. Dump everything in the pot and follow
-    this algorithm:
+Here is a simple footnote[^1].
 
-        find wooden spoon
-        uncover pot
-        stir
-        cover pot
-        balance wooden spoon precariously on pot handle
-        wait 10 minutes
-        goto first step (or shut off burner when done)
+A footnote can also have multiple lines[^2].  
 
-    Do not bump wooden spoon or it will fall.
+You can also use words, to fit your writing style more closely[^note].
 
-Notice again how text always lines up on 4-space indents (including
-that last line which continues item 3 above).
+[^1]: My reference.
+[^2]: Every new line should be prefixed with 2 spaces.  
+  This allows you to have a footnote with multiple lines.
+[^note]:
+    Named footnotes will still render with numbers instead of the text but allow easier identification and linking.  
+    This footnote also has been made with a different syntax using 4 spaces for new lines.
 
-Here's a link to [a website](http://foo.bar), to a [local
-doc](local-doc.html), and to a [section heading in the current
-doc](#an-h2-header). Here's a footnote [^1].
+# Extra Styles 
+## Tables 
+Colons can be used to align columns.
 
-[^1]: Footnote text goes here.
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
 
-Tables can look like this:
+There must be at least 3 dashes separating each header cell.
+The outer pipes (|) are optional, and you don't need to make the 
+raw Markdown line up prettily. You can also use inline Markdown.
 
-size  material      color
-----  ------------  ------------
-9     leather       brown
-10    hemp canvas   natural
-11    glass         transparent
+Markdown | Less | Pretty
+--- | --- | ---
+*Still* | `renders` | **nicely**
+1 | 2 | 3
 
-Table: Shoes, their sizes, and what they're made of
+> Blockquotes are very handy in email to emulate reply text.
+> This line is part of the same quote.
 
-(The above is the caption for the table.) Pandoc also supports
-multi-line tables:
+## Quote break.
 
---------  -----------------------
-keyword   text
---------  -----------------------
-red       Sunsets, apples, and
-          other red or reddish
-          things.
+> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote. 
 
-green     Leaves, grass, frogs
-          and other things it's
-          not easy being.
---------  -----------------------
+### Three or more...
 
-A horizontal rule follows.
+---
+
+### Hyphens
 
 ***
 
-Here's a definition list:
+### Asterisks
 
-apples
-  : Good for making applesauce.
-oranges
-  : Citrus!
-tomatoes
-  : There's no "e" in tomatoe.
+___
 
-Again, text is indented 4 spaces. (Put a blank line between each
-term/definition pair to spread things out more.)
+## Underscores
 
-Here's a "line block":
+Here's a line for us to start with.
 
-| Line one
-|   Line too
-| Line tree
+This line is separated from the one above by two newlines, so it will be a *separate paragraph*.
 
-and images can be specified like so:
+This line is also a separate paragraph, but...
+This line is only separated by a single newline, so it's a separate line in the *same paragraph*.
 
-![example image](example-image.jpg "An exemplary image")
+# Video Embeds
 
-Inline math equations go in like so: $\omega = d\phi / dt$. Display
-math should get its own line and be put in in double-dollarsigns:
-
-$$I = \int \rho R^{2} dV$$
-
-And note that you can backslash-escape any punctuation characters
-which you wish to be displayed literally, ex.: \`foo\`, \*bar\*, etc.
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg)](http://www.youtube.com/watch?v=dQw4w9WgXcQ)
