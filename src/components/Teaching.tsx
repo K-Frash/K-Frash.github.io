@@ -4,7 +4,7 @@ import { Link } from "wouter";
 import { CourseLinkMeta } from "../data/courses";
 
 const cardVariants = {
-  hidden: { opacity: 0, y: "20vh" },
+  hidden: { opacity: 0, y: "10vh" },
   visible: { opacity: 1, y: 0 },
   hover: {
     scale: 1.05,
@@ -18,7 +18,7 @@ const containerVariants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.05,
     },
   },
 };
