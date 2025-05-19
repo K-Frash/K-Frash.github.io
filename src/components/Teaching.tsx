@@ -4,19 +4,21 @@ import { Link } from "wouter";
 import { CourseLinkMeta } from "../data/courses";
 
 const cardVariants = {
-  initial: {
-    scale: 1,
-    boxShadow: "0 0px 0px rgba(0,0,0,0.15)",
-    border: "solid 0px var(--course-color1)",
-  },
+  hidden: { opacity: 0, y: "20vh" },
+  visible: { opacity: 1, y: 0 },
   hover: {
     scale: 1.05,
     boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
     border: "solid 10px var(--course-color1)",
+    transition: { duration: 1 },
+  },
+};
+
+const containerVariants = {
+  hidden: {},
+  visible: {
     transition: {
-      scale: { ease: "easeInOut", duration: 0.2 },
-      boxShadow: { ease: "easeInOut", duration: 0.2 },
-      border: { ease: "easeInOut", duration: 0.2 },
+      staggerChildren: 0.1,
     },
   },
 };
@@ -38,24 +40,30 @@ export default function Teaching({ courses }: { courses: CourseLinkMeta[] }) {
         semester's content. (Content under construction, but stay tuned!)
       </p>
 
-      <div class={style.container}>
+      <motion.div
+        class={style.container}
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
         {courses.map((c) => (
-          <Link href={`/teaching/${c.courseId}`} class={style.link} key={c.courseId}>
+          <Link
+            href={`/teaching/${c.courseId}`}
+            class={style.link}
+            key={c.courseId}
+          >
             <motion.div
-              initial="initial"
-              layoutId={`course-${c.courseId}`}
+              // layoutId={`course-${c.courseId}`}
               class={`${style.card} ${c.courseId}`}
               variants={cardVariants}
-              whileHover="hover"
+              // whileHover="hover"
             >
-              {/* <div class={style[c.id]}> */}
               <div class={style.title}>{c.title}</div>
               <div class={style.term}>{c.term}</div>
-              {/* </div> */}
             </motion.div>
           </Link>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }

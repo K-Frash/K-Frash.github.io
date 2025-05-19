@@ -46,7 +46,15 @@
   text-align: center;
   user-select: none;
   overflow: hidden;
-  transition: box-shadow 0.2s border 0.2s;
+  /* transition: transform 0.25s ease, box-shadow 0.25s ease; */
+  /* will-change: transform, box-shadow; */
+}
+
+.card:hover {
+  box-shadow: 0 0 10px var(--course-color1);
+  border: solid 2px var(--course-color1);
+  scale: 1.05;
+  transition: all 0.25s ease;
 }
 
 .title {

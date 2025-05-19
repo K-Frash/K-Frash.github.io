@@ -16,7 +16,7 @@ const modules = import.meta.glob("./cs*/notes/lesson*.md", {
   import: "default",
 });
 
-export default function CourseLoader({ courseId, title, term }: CourseLoaderProps) {
+export default function CourseLoader({ courseId, title }: CourseLoaderProps) {
   const [notes, setNotes] = useState<string[] | null>(null);
   const [error, setError] = useState(false);
 

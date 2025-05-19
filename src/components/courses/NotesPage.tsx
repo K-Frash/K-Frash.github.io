@@ -7,7 +7,7 @@ import "highlight.js/styles/github-dark.css";
 import hljs from "highlight.js";
 
 class HeaderRenderer extends Renderer {
-  override heading(text: string, level: number, raw: string) {
+  override heading(text: string, level: number) {
     const id = slugify(text, { lower: true, strict: true });
     return `<h${level} id="${id}">${text}</h${level}>`; // TODO: track stable IDs for ToC
   }
