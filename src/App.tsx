@@ -10,9 +10,11 @@ import Footer from "./components/Footer";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Teaching from "./components/Teaching";
-import CourseLoader from "./components/CourseLoader";
+import CourseLoader from "./components/courses/CourseLoader";
 import Resume from "./components/Resume";
 import Projects from "./components/Projects";
+
+import { courses } from "./data/courses";
 
 export default function App() {
   useEffect(() => {
@@ -27,10 +29,18 @@ export default function App() {
           <Switch>
             <Route path="/" component={About} />
             <Route path="/resume" component={Resume} />
-            <Route path="/teaching" component={Teaching} />
+            <Route path="/teaching">
+              {() => <Teaching courses={courses} />}
+            </Route>
             <Route path="/teaching/:courseId">
               {({ courseId }) =>
-                courseId ? <CourseLoader courseId={courseId} /> : null
+                courseId ? (
+                  <CourseLoader
+                    courseId={courseId}
+                    title={courses.find((c) => c.courseId === courseId)?.title || ""}
+                    term={courses.find((c) => c.courseId === courseId)?.term || ""}
+                  />
+                ) : null
               }
             </Route>
             <Route path="/projects" component={Projects} />

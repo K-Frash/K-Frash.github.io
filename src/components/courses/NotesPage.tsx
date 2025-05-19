@@ -3,7 +3,7 @@ import { Marked, Renderer } from "@ts-stack/markdown";
 import { useMemo } from "preact/hooks";
 import slugify from "slugify";
 import style from "./Courses.module.css";
-import 'highlight.js/styles/github-dark.css';
+import "highlight.js/styles/github-dark.css";
 import hljs from "highlight.js";
 
 class HeaderRenderer extends Renderer {
@@ -14,7 +14,7 @@ class HeaderRenderer extends Renderer {
 }
 
 Marked.setOptions({
-  langPrefix: 'hljs language-',
+  langPrefix: "hljs language-",
   highlight: (code, lang) =>
     hljs.highlight(code, { language: lang || "plaintext" }).value,
   renderer: new HeaderRenderer(),
@@ -28,15 +28,15 @@ Marked.setOptions({
 });
 
 export type NotesProps = {
-  note: string;
+  markdown: string;
 };
 
-export default function Note({ note }: NotesProps) {
+export default function Note({ markdown }: NotesProps) {
   const [html, setHtml] = useState<string>("");
 
   useEffect(() => {
-    setHtml(Marked.parse(note));
-  }, [note]);
+    setHtml(Marked.parse(markdown));
+  }, [markdown]);
 
   return <div dangerouslySetInnerHTML={{ __html: html }} />;
 }

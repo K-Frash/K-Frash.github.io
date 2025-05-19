@@ -75,7 +75,9 @@ alert(s);
 ```
  
 ```python
+# Hello world
 s = "Python syntax highlighting"
+## Hello world again
 print s
 ```
  

@@ -8,6 +8,11 @@
   overflow-y: none;
 }
 
+.errorPage{
+  color: var(--primary-color);
+  margin: 2rem;
+}
+
 .courseHeader{
     /* border-radius: 0.5rem; */
     border-bottom: 3px solid white;

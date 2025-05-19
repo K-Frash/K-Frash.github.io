@@ -1,45 +1,7 @@
 import style from "../styles/Teaching.module.css";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-
-interface CourseMeta {
-  id: string;
-  title: string;
-  term: string;
-}
-
-const courses: CourseMeta[] = [
-  {
-    id: "cs116",
-    title: "Introduction to Computer Science 2 (Python)",
-    term: "Winter 2025",
-  },
-  {
-    id: "cs241",
-    title: "Foundations of Sequential Programs",
-    term: "Winter 2024",
-  },
-  {
-    id: "cs115",
-    title: "Introduction to Computer Science 1 (Scheme)",
-    term: "Winter 2024",
-  },
-  {
-    id: "cs349",
-    title: "User Interfaces",
-    term: "Spring 2024",
-  },
-  {
-    id: "cs245",
-    title: "Logic and Computation",
-    term: "Spring 2023",
-  },
-  {
-    id: "cs246",
-    title: "Object-Oriented Programming",
-    term: "Winter 2023",
-  },
-];
+import { CourseLinkMeta } from "../data/courses";
 
 const cardVariants = {
   initial: {
@@ -59,7 +21,7 @@ const cardVariants = {
   },
 };
 
-export default function Teaching() {
+export default function Teaching({ courses }: { courses: CourseLinkMeta[] }) {
   return (
     <div class={style.body}>
       <div class={style.quote}>
@@ -78,11 +40,11 @@ export default function Teaching() {
 
       <div class={style.container}>
         {courses.map((c) => (
-          <Link href={`/teaching/${c.id}`} class={style.link} key={c.id}>
+          <Link href={`/teaching/${c.courseId}`} class={style.link} key={c.courseId}>
             <motion.div
               initial="initial"
-              layoutId={`course-${c.id}`}
-              class={`${style.card} ${c.id}`}
+              layoutId={`course-${c.courseId}`}
+              class={`${style.card} ${c.courseId}`}
               variants={cardVariants}
               whileHover="hover"
             >
