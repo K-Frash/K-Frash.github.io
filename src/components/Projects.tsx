@@ -2,7 +2,7 @@ import style from "../styles/Projects.module.css";
 import { useState } from "preact/hooks";
 import { JSX } from "preact";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Masonry from "react-masonry-css";
 
 import {
@@ -10,6 +10,7 @@ import {
   PDFIcon,
   WorldIcon,
   DevpostIcon,
+  ChevronDown,
 } from "../components/icons";
 
 import persona from "../assets/projects/persona_teaser.png";
@@ -269,6 +270,7 @@ function ProjectCard({
 
 export default function Projects() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [showFilters, setShowFilters] = useState(false);
 
   const tagMap = new Map<string, true>();
   allProjects.forEach((p) => {
@@ -310,19 +312,49 @@ export default function Projects() {
         Projects are how I explore technical ideas. Below are works I've built
         around HCI, AI, and systems design.
       </p>
-      <h1 class={style.filterTitle}>Filters</h1>
-      <div class={style.filters}>
-        {allTags.map((tag) => (
-          <button
-            class={`${style.chip} ${
-              selectedTags.includes(tag) ? style.activeChip : ""
-            }`}
-            onClick={() => toggleTag(tag)}
+      <button
+        class={style.filterToggle}
+        onClick={() => setShowFilters((prev) => !prev)}
+        aria-expanded={showFilters}
+      >
+        {showFilters ? (
+          <>
+            Hide Filters <ChevronDown class={style.toggleIcon} />
+          </>
+        ) : (
+          <>
+            Show Filters <ChevronDown class={style.toggleIcon} />
+          </>
+        )}
+      </button>
+
+      <AnimatePresence initial={false}>
+        {showFilters && (
+          <motion.div
+            key="filters"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            style={{ overflow: "hidden" }}
+            class={style.filterContainer}
           >
-            {tag}
-          </button>
-        ))}
-      </div>
+            {/* <h1 class={style.filterTitle}>Filters</h1> */}
+            <div class={style.filters}>
+              {allTags.map((tag) => (
+                <button
+                  class={`${style.chip} ${
+                    selectedTags.includes(tag) ? style.activeChip : ""
+                  }`}
+                  onClick={() => toggleTag(tag)}
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <Masonry
         breakpointCols={breakpointColumnsObj}
