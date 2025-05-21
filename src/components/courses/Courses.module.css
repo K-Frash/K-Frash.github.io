@@ -8,24 +8,22 @@
   overflow-y: none;
 }
 
-.errorPage{
+.errorPage {
   color: var(--primary-color);
   margin: 2rem;
 }
 
-.courseHeader{
-    /* border-radius: 0.5rem; */
-    border-bottom: 3px solid white;
-    padding-bottom: 0.5rem;
-  
+.courseHeader {
+  /* border-radius: 0.5rem; */
+  border-bottom: 3px solid white;
+  padding-bottom: 0.5rem;
 }
 
 .tableOfContents {
   background: var(--course-bg);
   color: white;
-  padding: 2rem;
+  /* padding: 2rem; */
   /* border-radius: 0.5rem; */
-  display: flex;
   flex-direction: column;
   text-align: center;
   width: 20rem;
@@ -34,6 +32,28 @@
   overflow-x: none;
   word-wrap: break-word;
   /* margin-bottom: 1.5rem; */
+}
+
+.toggleTOC {
+  display: none;
+  position: fixed;
+  top: 4rem;
+  left: 0.5rem;
+
+  align-items: center;
+  background-color: var(--pop1-color);
+  color: var(--tertiary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  border: none;
+  opacity: 0.8;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.toggleContent{
+  display: none;
 }
 
 .tableOfContents h1 {
@@ -49,7 +69,7 @@
   margin-top: 2rem;
 }
 
-.footer a{
+.footer a {
   flex: 1;
   font-size: 1rem;
 }
@@ -67,7 +87,7 @@
 
 .contentInner {
   max-width: 1000px;
-  margin: 0 auto;        /* center your text inside the full-width scroll container */
+  margin: 0 auto; /* center your text inside the full-width scroll container */
 }
 
 .content h1 {
@@ -86,8 +106,9 @@
   margin-top: 1rem;
 }
 
-.content img{
+.content img {
   max-width: 1000px;
+  width: 100%;
 }
 
 .content p,
@@ -96,7 +117,7 @@
   margin: 1rem 0;
 }
 
-.content li ul{
+.content li ul {
   margin: 0;
 }
 
@@ -121,7 +142,7 @@
   gap: 0.25rem;
 }
 
-.tocList a{
+.tocList a {
   font-size: 1.2rem;
 }
 
@@ -143,4 +164,10 @@
 }
 .level6 {
   margin-left: 5rem;
+}
+
+@media (max-width: 1000px) {
+  .toggleTOC {
+    display: block;
+  }
 }
