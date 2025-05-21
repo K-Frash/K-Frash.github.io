@@ -33,6 +33,7 @@
   overflow-x: none;
   word-wrap: break-word;
   /* margin-bottom: 1.5rem; */
+  scrollbar-color: var(--secondary-color) var(--dimmer);
 }
 
 .toggleTOC {
@@ -84,6 +85,7 @@
   overflow-y: scroll;
   overflow-x: none;
   scroll-behavior: smooth;
+  scrollbar-color: var(--pop1-color) var(--secondary-color);
 }
 
 .contentInner {

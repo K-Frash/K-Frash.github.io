@@ -1,6 +1,6 @@
 import style from "../styles/Resume.module.css";
 import { motion } from "framer-motion";
-import { PDFIcon } from "../components/icons";
+import { PDFIcon, OutLinkIcon } from "../components/icons";
 
 import uwCS from "../assets/resume/uwCS.png";
 import uwLogo from "../assets/resume/uwLogo.png";
@@ -10,7 +10,10 @@ import reebee from "../assets/resume/reebeeFlippLogo.png";
 import imagine from "../assets/resume/imagineLogo.jpeg";
 import dematic from "../assets/resume/dematic.jpg";
 import meta from "../assets/resume/metaAi.png";
-import sandvine from "../assets/resume/sandvine.png";
+import applogic from "../assets/resume/applogicnetworks_logo.jpg";
+import chi from "../assets/resume/chi_logo.png";
+import dis from "../assets/resume/dis_logo.png";
+import uist from "../assets/resume/uist_logo.png";
 
 const containerVariants = {
   hidden: {},
@@ -32,14 +35,35 @@ type ResumeCardProps = {
   org: string;
   dates: string[];
   logo: string;
+  link?: string;
   bullets: (string | string[])[];
 };
 
-function ResumeCard({ title, org, dates, logo, bullets }: ResumeCardProps) {
+function ResumeCard({
+  title,
+  org,
+  dates,
+  logo,
+  link,
+  bullets,
+}: ResumeCardProps) {
   return (
     <motion.div class={style.card} variants={cardVariants}>
       {" "}
-      <h3 class={style.title}>{title}</h3>
+      {link ? (
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class={style.titleLink}
+        >
+          <h3 class={style.title}>
+            {title} <OutLinkIcon class={style.titleLinkIcon} />
+          </h3>
+        </a>
+      ) : (
+        <h3 class={style.title}>{title}</h3>
+      )}
       <div class={style.subheading}>
         <span class={style.org}>{org}</span>
         <div class={style.dates}>
@@ -101,6 +125,7 @@ export default function Resume() {
           org="University of Waterloo"
           dates={["Janurary 2023 - Present"]}
           logo={uwCS}
+          link="https://uwaterloo.ca/computer-science/contacts/kris-frasheri"
           bullets={[
             "Coordinated the delivery of:",
             [
@@ -109,8 +134,8 @@ export default function Resume() {
               "Logic and Computation (Coq)",
               "Introduction to Programming Fundamentals (Python)",
             ],
-            "Conducted bi-weekly lectures, presenting topics to classes of 80 - 220 students",
-            "Developed assignments and exams to evaluate students' understanding of core course concepts",
+            "Conducted bi-weekly lectures, presenting topics to classes of up to 220 students.",
+            "Developed assignments and exams to evaluate students' understanding of core course concepts.",
           ]}
         />
         <ResumeCard
@@ -118,6 +143,7 @@ export default function Resume() {
           org="University of Waterloo"
           dates={["September 2022 - January 2025"]}
           logo={aiLogo}
+          link="https://edithlaw.ca/index.html"
           bullets={[
             "Engaged in interdisciplinary research related to:",
             [
@@ -142,8 +168,9 @@ export default function Resume() {
             "September 2023 - December 2024",
           ]}
           logo={cra}
+          link="https://cra.org/ur2phd/"
           bullets={[
-            "Guided two cohorts of 3-4 undergraduate students through research projects in Human-Computer Interaction and AI development.",
+            "Guided multiple cohorts of 3-4 undergraduate students through research projects in HCI and AI development.",
             "Focused on designing tools to observe how LLM-personas can assist users with value-sensitive decision-making tasks, with a focus on value-sensitive design (VSD).",
             "Completed formal mentor training provided by the Computing Research Association (CRA), emphasizing culturally responsive mentorship practices.",
           ]}
@@ -158,6 +185,7 @@ export default function Resume() {
             "January 2024 - April 2024",
           ]}
           logo={uwCS}
+          link="https://uwaterloo.ca/computer-science-instructional-support-group/teaching-assistant-instructional-apprentice-support/teaching-assistant-and-instructional-apprentice-duty"
           bullets={[
             "Supported student success in second-year CS and SE courses through hands-on instruction, technical guidance, and real-time help during office hours.",
             "Delivered tutorials and exam review sessions that reinforced lecture content and emphasized practical understanding of course material.",
@@ -169,6 +197,7 @@ export default function Resume() {
           org="Flipp (formerly ReeBee)"
           dates={["September 2021 - January 2023"]}
           logo={reebee}
+          link="https://flipp.com/"
           bullets={[
             "Utilized Thompson Sampling with contextual bandits to personalize flyer recommendations to millions of users, increasing click-through rate by 8.8% yielding over $176,000 in annual revenue.",
             "Constructed ML pipelines by containerizing our models with Docker, state tracking with DVC + Hydra and model deployment with AWS Lambda.",
@@ -181,6 +210,7 @@ export default function Resume() {
           org="Imagine Communications"
           dates={["Janurary 2022 - January 2023"]}
           logo={imagine}
+          link="https://imaginecommunications.com/"
           bullets={[
             "Constructed upon a complex real-time graphics environment in OpenGL and C++.",
             "Implemented frame-accurate, data-source-agnostic synchronization in the in-house graphics emulator, enabling dynamic rendering from live content feeds across both local and remote media.",
@@ -193,6 +223,7 @@ export default function Resume() {
           org="Dematic"
           dates={["May 2020 - September 2020", "January 2021 - April 2021"]}
           logo={dematic}
+          link="https://www.dematic.com/en-ca/"
           bullets={[
             "Leveraged Unity's Data Oriented Technology Stack (DOTS) in enhancing the performance of large scale client scenes that utilized over 500,000 dynamic entities by 135%.",
             "Implemented control flow algorithms for monorail and conveyor layouts in C# within Unity to optimize package transportation at runtime, enhancing customer supply chain efficiency by 37%.",
@@ -206,6 +237,7 @@ export default function Resume() {
           org="University of Waterloo + Meta AI"
           dates={["December 2019 - June 2020"]}
           logo={meta}
+          link="https://ai.meta.com/research/"
           bullets={[
             "Conducted research with Charles Clarke in the field of neural indexing for conversational modeling in collaboration with Meta AI Research (formerly Facebook AI).",
             "Reduced weakly supervised training time in the Standalone Neural Ranking Model by 15% leveraging the TensorFlow library.",
@@ -215,21 +247,23 @@ export default function Resume() {
         />
         <ResumeCard
           title="Build Engineer, Platform Infrastructure (Co-Op)"
-          org="Sandvine INC"
+          org="AppLogic Networks"
           dates={["September 2019 - December 2019"]}
-          logo={sandvine}
+          logo={applogic}
+          link="https://www.applogicnetworks.com/"
           bullets={[
-            "Leveraged GitLab's Git hook architecture in bolstering internal server security while enhancing the team's software development life cycle.",
             "Automated build and deployment using Jenkins and Python to eliminate 80% of overhead labour costs, accelerating the production process.",
             "Optimized shell deployment scripts, reducing release times from 5+ hours to less than 30 minutes.",
+            "Leveraged GitLab's Git hook architecture in bolstering internal server security while enhancing the team's software development life cycle.",
             "Implemented and maintained features in the CI Platform and testing automation framework.",
           ]}
         />
         <ResumeCard
-          title="Instructional Support Assistant (Co-Op, Full-Time)"
+          title="Instructional Support Assistant (Co-Op & Full-Time)"
           org="University of Waterloo"
           dates={["April 2018 - May 2022"]}
           logo={uwCS}
+          link="https://uwaterloo.ca/computer-science-instructional-support-group/"
           bullets={[
             "Assisted in the coordination of CS246: Object-Oriented Software Development (Bash | C++).",
             "Delivered tutorials and addressed inquiries on Object-Oriented principles and the Unix environment, developing 200 to 1800 line programs in C++.",
@@ -246,6 +280,7 @@ export default function Resume() {
           org="University of Waterloo"
           dates={["September 2022 - December 2024"]}
           logo={uwLogo}
+          link="https://uwaterloo.ca/future-graduate-students/programs/by-faculty/math/computer-science-master-math-mmath"
           bullets={[
             "Conducted research in the domain of self-reflection technology for understanding bias in machine teaching under the supervision of Dr. Edith Law.",
             "Thesis focus was on developing Human-in-the-loop LLM annotation tools aimed at recognizing and mitigating labelling biases during subjective dataset labelling tasks.",
@@ -257,6 +292,7 @@ export default function Resume() {
           org="University of Waterloo"
           dates={["September 2016 - August 2021"]}
           logo={uwLogo}
+          link="https://uwaterloo.ca/future-students/programs/computer-science"
           bullets={[
             "Honours Computer Science - Co-operative Program, graduated with distinction.",
             "Recipient of the Merit Entrance Scholarship, granting a one-time payment of CAD $1,000 towards tuition costs.",
@@ -264,12 +300,13 @@ export default function Resume() {
         />
       </section>
       <section class={style.section}>
-        <h2 class={style.sectionTitle}>SERVICE</h2>
+        <h2 class={style.sectionTitle}>ACADEMIC SERVICE</h2>
         <ResumeCard
           title="DIS 2025 Reviewer"
           org="ACM Conference on Designing Interactive Systems"
           dates={["March 2025"]}
-          logo=""
+          logo={dis}
+          link="https://dis.acm.org/2025/"
           bullets={[
             "Reviewed and provided feedback for a full-paper submission.",
           ]}
@@ -278,7 +315,8 @@ export default function Resume() {
           title="CHI 2025 Reviewer"
           org="ACM CHI Conference on Human Factors in Computing Systems"
           dates={["February 2025"]}
-          logo=""
+          logo={chi}
+          link="https://chi2025.acm.org/"
           bullets={[
             "Reviewed and provided feedback for multiple rounds of a full-paper submission.",
           ]}
@@ -287,7 +325,8 @@ export default function Resume() {
           title="UIST 2024 Reviewer"
           org="ACM Symposium on User Interface Software and Technology"
           dates={["May 2024"]}
-          logo=""
+          logo={uist}
+          link="https://uist.acm.org/2024/"
           bullets={[
             "Reviewed and provided feedback for a full-paper submission.",
           ]}
@@ -300,6 +339,7 @@ export default function Resume() {
           org="Ontario Undergraduate Student Alliance (OUSA)"
           dates={["March 2025"]}
           logo=""
+          link="https://wusa.ca/about/awards/teaching-award/"
           bullets={[
             "Acknowledged for inspiring teaching practices and meaningful student engagement, as recognized by student nominations across Ontario universities.",
           ]}
@@ -309,6 +349,7 @@ export default function Resume() {
           org="Cheriton School of Computer Science "
           dates={["September 2024"]}
           logo=""
+          link="https://uwaterloo.ca/student-awards-financial-aid/awards/sandford-fleming-foundation-sff-award-teaching-assistantship#:~:text=The%20Sandford%20Fleming%20Foundation%20(SFF,department%20and%20in%20first%20year."
           bullets={[
             "Recognized for exceptional contributions and dedication to student learning across multiple academic terms.",
             "Included CAD $500 towards research funding.",

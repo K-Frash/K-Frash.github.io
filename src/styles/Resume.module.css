@@ -37,16 +37,46 @@
   will-change: box-shadow;
 }
 
-.card:hover{
+.card:hover {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
 .title {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 2px;
   color: var(--pop1-color);
   font-size: 2rem;
   font-weight: bold;
   margin: 0;
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background-color: var(--pop1-color);
+  transition: width 0.3s ease;
+}
+
+.titleLink:hover .title::after {
+  width: 100%;
+}
+
+
+.titleLink {
+  text-decoration: none;
+  position: relative;
+  width: fit-content;
+}
+
+.titleLinkIcon {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .subheading {
@@ -118,7 +148,7 @@
   margin-bottom: 1.5rem;
 }
 
-.promptText{
+.promptText {
   display: inline-flex;
   align-items: center;
   padding: 0.5rem 1rem;

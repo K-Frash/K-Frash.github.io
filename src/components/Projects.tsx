@@ -27,7 +27,7 @@ import mdpGame from "../assets/projects/mdp-robot.png";
 
 const breakpointColumnsObj = {
   default: 3,
-  900: 2,
+  1000: 2,
   600: 1,
 };
 

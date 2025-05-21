@@ -93,12 +93,12 @@ export default function About() {
     <div class={style.body}>
       <div class={style.profileSummary}>
         <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-                duration: 0.4,
-                scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
-            }}
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.4,
+            scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
+          }}
         >
           <motion.div
             ref={imageRef}
@@ -118,8 +118,8 @@ export default function About() {
               src={profileImg}
               alt="Kris Frasheri"
               class={style.profileImage}
-              initial={ { scale: 0.75} }
-              animate={ { scale: 1}}
+              initial={{ scale: 0.75 }}
+              animate={{ scale: 1 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             />
           </motion.div>
@@ -177,24 +177,29 @@ export default function About() {
             Hello there!
             <motion.span
               class={style.wave}
-              initial={{ scale: 0  }}
+              initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{
                 duration: 0.2,
-                scale: { type: "spring", visualDuration: 0.2, bounce: 0.75, delay: 1},
-            }}
+                scale: {
+                  type: "spring",
+                  visualDuration: 0.2,
+                  bounce: 0.75,
+                  delay: 1,
+                },
+              }}
             >
               👋
             </motion.span>
           </h1>
           <p>
-            I'm Kris Frasheri, an AI and HCI researcher who recently completed
-            my Master of Mathematics in Computer Science at the University of
-            Waterloo under the supervision of Dr. Edith Law. My research sits at
-            the intersection of artificial intelligence, human-computer
-            interaction, and education, with a particular focus on how LLMs can
-            support collaborative reflection and value alignment in subjective
-            tasks.
+            I'm Kris Frasheri, an Artificial Intelligence (AI) &
+            Human-Computer Interaction (HCI) researcher with a my Master of
+            Mathematics in Computer Science at the University of Waterloo. Under
+            the supervision of Dr. Edith Law, my research lies in the
+            intersection of AI, HCI, and education, with a focus on exploring how LLMs can
+            support collaborative reflection and shape value alignment
+            throughout subjective decision-making tasks.
           </p>
           <p>
             Outside of research, I have taught a wide range of undergraduate
