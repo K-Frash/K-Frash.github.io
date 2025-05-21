@@ -8,7 +8,6 @@ This course builds on the techniques and patterns learned in CS 115 while making
 * File and console I/O.
 * Issues in computer science.
 
-
 ## Learning Outcomes
 After completing this course, students will be able to:
 * Given a clear and concise statement of a problem or task, write a program from scratch of up to a hundred lines of properly-formatted, tested, and documented Python code to solve the problem or carry out the task

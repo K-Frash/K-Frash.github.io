@@ -22,11 +22,12 @@
 .tableOfContents {
   background: var(--course-bg);
   color: white;
+  display:flex;
   /* padding: 2rem; */
   /* border-radius: 0.5rem; */
   flex-direction: column;
   text-align: center;
-  width: 20rem;
+  /* width: 20rem; */
   height: auto;
   overflow-y: scroll;
   overflow-x: none;
@@ -52,7 +53,7 @@
   transition: opacity 0.2s ease;
 }
 
-.toggleContent{
+.toggleContent {
   display: none;
 }
 
@@ -140,6 +141,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+    /* padding-left: 1em; indent each nested <ul> */
 }
 
 .tocList a {
@@ -151,19 +153,30 @@
   margin-left: 0;
 }
 .level2 {
-  margin-left: 1rem;
+  margin-left: 0.5rem;
 }
 .level3 {
-  margin-left: 2rem;
+  margin-left: 1.5rem;
 }
 .level4 {
-  margin-left: 3rem;
+  margin-left: 2.5rem;
 }
 .level5 {
-  margin-left: 4rem;
+  margin-left: 3.5rem;
 }
 .level6 {
-  margin-left: 5rem;
+  margin-left: 4.5rem;
+}
+
+.level2::before,
+.level4::before,
+.level6::before {
+  content: "• ";
+}
+
+.level3::before,
+.level5::before {
+  content: "◦ ";
 }
 
 @media (max-width: 1000px) {

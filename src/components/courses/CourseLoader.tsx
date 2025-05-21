@@ -94,7 +94,7 @@ export default function CourseLoader({ courseId, title }: CourseLoaderProps) {
               layout
               initial={{ width: 0, opacity: 0, padding: "0rem" }}
               animate={{
-                width: isTiny ? "100%" : 320,
+                width: isTiny ? "100%" : "21rem",
                 opacity: 1,
                 padding: isTiny ? "1rem" : "2rem",
               }}

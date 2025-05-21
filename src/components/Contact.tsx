@@ -1,28 +1,75 @@
-import { useRef } from "preact/hooks";
-import { motion } from "framer-motion";
+import { useRef, useState } from "preact/hooks";
+import { motion, AnimatePresence } from "framer-motion";
 import style from "../styles/Contact.module.css";
 import { GitHubIcon, LinkedInIcon, EmailIcon } from "./icons";
 
 export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<"SUCCESS" | "ERROR" | null>(null);
 
-  function handleSubmit(e: Event) {
+  async function handleSubmit(e: Event) {
     e.preventDefault();
-    const form = new FormData(formRef.current!);
-    const subject = `Contact from ${form.get("name")}`;
-    const body = [
-      `Hey Kris,\n`,
-      `${form.get("message")}\n`,
-      `${form.get("name")}`,
-      `${form.get("email")}`,
-    ].join("\n");
-    window.location.href =
-      `mailto:krisfrasheri@gmail.com?subject=${encodeURIComponent(subject)}` +
-      `&body=${encodeURIComponent(body)}`;
+    const form = formRef.current!;
+    const data = new FormData(form);
+
+    try {
+      //AJAX request to Formspree should be okay? TODO: check CORS
+      const res = await fetch("https://formspree.io/f/xzzrqpqg", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+      });
+      if (res.ok) {
+        setStatus("SUCCESS");
+        form.reset();
+        setTimeout(() => setStatus(null), 3000); // Popup dismissal hard coded for now
+      } else {
+        setStatus("ERROR");
+      }
+    } catch {
+      setStatus("ERROR");
+    }
+
+    //// Disabled for now as I investiage specific mailto errors on certain browsers
+    // const form = new FormData(formRef.current!);
+    // const subject = `Contact from ${form.get("name")}`;
+    // const body = [
+    //   `Hey Kris,\n`,
+    //   `${form.get("message")}\n`,
+    //   `${form.get("name")}`,
+    //   `${form.get("email")}`,
+    // ].join("\n");
+    // window.location.href =
+    //   `mailto:krisfrasheri@gmail.com?subject=${encodeURIComponent(subject)}` +
+    //   `&body=${encodeURIComponent(body)}`;
   }
 
   return (
     <div class={style.body}>
+      <AnimatePresence>
+        {status === "SUCCESS" && (
+          <motion.div
+            class={style.toast}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.3 }}
+          >
+            Thank you for reaching out! 🙌
+          </motion.div>
+        )}
+        {status === "ERROR" && (
+          <motion.div
+            class={style.toastError}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.3 }}
+          >
+            Oops—something went wrong. ⛓️‍💥
+          </motion.div>
+        )}
+      </AnimatePresence>
       <motion.div
         class={style.container}
         initial={{ opacity: 0, y: 20 }}
@@ -35,7 +82,7 @@ export default function Contact() {
           collaboration, or just want to say hello! 👋
         </p>
 
-        <form ref={formRef} class={style.form} action="https://formspree.io/f/xzzrqpqg" method="POST">
+        <form ref={formRef} class={style.form} onSubmit={handleSubmit}>
           <motion.input
             class={style.input}
             type="text"

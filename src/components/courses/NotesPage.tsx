@@ -12,7 +12,7 @@ class HeaderRenderer extends Renderer {
     return `<h${level} id="${id}">${text}</h${level}>`; // TODO: track stable IDs for ToC
   }
   override link(href: string, title: string, text: string){
-    return `<a href=${href} title=${title} target="_blank">${text}</a>`;
+    return `<a href=${href} ${ title ? "title=${title}" : ""} target="_blank">${text}</a>`;
   }
 
 }
