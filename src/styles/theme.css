@@ -22,6 +22,7 @@ html {
   --tertiary-color: #d6e6f2;
   --pop1-color: #27548a;
   --pop2-color: #d6e6f2;
+  --dimmer: rgba(255, 255, 255, 0.2);
 
   --cx: 0;
   --cy: 0;
@@ -29,59 +30,118 @@ html {
   .cs115 {
     --course-color1: rgba(251, 188, 4, 1);
     --course-color2: rgba(227, 116, 0, 1);
-    --course-bg: 
-      linear-gradient(127deg, var(--course-color1), rgba(251, 188, 4, 0.2) 70.71%),
-      linear-gradient(226deg, var(--course-color1), rgba(251, 188, 4, 0.2) 70.71%),
-      linear-gradient(336deg, var(--course-color2), rgba(227, 116, 0, 0.2) 70.71%);
+    --course-bg: linear-gradient(
+        127deg,
+        var(--course-color1),
+        rgba(251, 188, 4, 0.2) 70.71%
+      ),
+      linear-gradient(
+        226deg,
+        var(--course-color1),
+        rgba(251, 188, 4, 0.2) 70.71%
+      ),
+      linear-gradient(
+        336deg,
+        var(--course-color2),
+        rgba(227, 116, 0, 0.2) 70.71%
+      );
   }
-  
+
   .cs116 {
     --course-color1: rgba(66, 133, 244, 1);
     --course-color2: rgba(126, 139, 251, 1);
-    --course-bg: 
-      linear-gradient(127deg, var(--course-color1), rgba(66, 133, 244, 0.2) 70.71%),
-      linear-gradient(226deg, var(--course-color1), rgba(66, 133, 244, 0.2) 70.71%),
-      linear-gradient(336deg, var(--course-color2), rgba(126, 139, 251, 0.2) 70.71%);
+    --course-bg: linear-gradient(
+        127deg,
+        var(--course-color1),
+        rgba(66, 133, 244, 0.2) 70.71%
+      ),
+      linear-gradient(
+        226deg,
+        var(--course-color1),
+        rgba(66, 133, 244, 0.2) 70.71%
+      ),
+      linear-gradient(
+        336deg,
+        var(--course-color2),
+        rgba(126, 139, 251, 0.2) 70.71%
+      );
   }
-  
+
   .cs241 {
     --course-color1: rgba(234, 67, 53, 1);
     --course-color2: rgba(165, 14, 14, 1);
-    --course-bg: 
-      linear-gradient(127deg, var(--course-color1), rgba(234, 67, 53, 0.2) 70.71%),
-      linear-gradient(226deg, var(--course-color1), rgba(234, 67, 53, 0.2) 70.71%),
-      linear-gradient(336deg, var(--course-color2), rgba(165, 14, 14, 0.2) 70.71%);
-  
+    --course-bg: linear-gradient(
+        127deg,
+        var(--course-color1),
+        rgba(234, 67, 53, 0.2) 70.71%
+      ),
+      linear-gradient(
+        226deg,
+        var(--course-color1),
+        rgba(234, 67, 53, 0.2) 70.71%
+      ),
+      linear-gradient(
+        336deg,
+        var(--course-color2),
+        rgba(165, 14, 14, 0.2) 70.71%
+      );
   }
-  
+
   .cs245 {
     --course-color1: rgba(0, 119, 182, 1);
     --course-color2: rgba(3, 4, 94, 1);
-    --course-bg: 
-      linear-gradient(127deg, var(--course-color1), rgba(0, 119, 182, 0.2) 70.71%),
-      linear-gradient(226deg, var(--course-color1), rgba(0, 119, 182, 0.2) 70.71%),
+    --course-bg: linear-gradient(
+        127deg,
+        var(--course-color1),
+        rgba(0, 119, 182, 0.2) 70.71%
+      ),
+      linear-gradient(
+        226deg,
+        var(--course-color1),
+        rgba(0, 119, 182, 0.2) 70.71%
+      ),
       linear-gradient(336deg, var(--course-color2), rgba(3, 4, 94, 0.2) 70.71%);
-  
   }
-  
+
   .cs246 {
     --course-color1: rgba(178, 90, 154, 1);
     --course-color2: rgba(101, 60, 162, 1);
-    --course-bg: 
-      linear-gradient(127deg, var(--course-color1), rgba(178, 90, 154, 0.2) 70.71%),
-      linear-gradient(226deg, var(--course-color1), rgba(178, 90, 154, 0.2) 70.71%),
-      linear-gradient(336deg, var(--course-color2), rgba(101, 60, 162, 0.2) 70.71%);
-  
+    --course-bg: linear-gradient(
+        127deg,
+        var(--course-color1),
+        rgba(178, 90, 154, 0.2) 70.71%
+      ),
+      linear-gradient(
+        226deg,
+        var(--course-color1),
+        rgba(178, 90, 154, 0.2) 70.71%
+      ),
+      linear-gradient(
+        336deg,
+        var(--course-color2),
+        rgba(101, 60, 162, 0.2) 70.71%
+      );
   }
-  
+
   .cs349 {
     --course-color1: rgba(52, 168, 83, 1);
     --course-color2: rgba(13, 101, 45, 1);
-    --course-bg: 
-      linear-gradient(127deg, var(--course-color1), rgba(52, 168, 83, 0.2) 70.71%),
-      linear-gradient(226deg, var(--course-color1), rgba(52, 168, 83, 0.2) 70.71%),
-      linear-gradient(336deg, var(--course-color2), rgba(13, 101, 45, 0.2) 70.71%);
-  }  
+    --course-bg: linear-gradient(
+        127deg,
+        var(--course-color1),
+        rgba(52, 168, 83, 0.2) 70.71%
+      ),
+      linear-gradient(
+        226deg,
+        var(--course-color1),
+        rgba(52, 168, 83, 0.2) 70.71%
+      ),
+      linear-gradient(
+        336deg,
+        var(--course-color2),
+        rgba(13, 101, 45, 0.2) 70.71%
+      );
+  }
 }
 
 /* Dark Mode Palette */
@@ -93,6 +153,7 @@ html {
   --tertiary-color: #223950;
   --pop1-color: #ffd60a;
   --pop2-color: #de5a32;
+  --dimmer: rgba(0, 0, 0, 0.2);
 }
 
 .disable-transitions * {

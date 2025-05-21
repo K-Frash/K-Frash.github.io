@@ -58,8 +58,9 @@ export default function Teaching({ courses }: { courses: CourseLinkMeta[] }) {
               variants={cardVariants}
               // whileHover="hover"
             >
+              <div class={style.badge}>{c.term}</div>
               <div class={style.title}>{c.title}</div>
-              <div class={style.term}>{c.term}</div>
+              <div class={style.term}>{c.courseId}</div>
             </motion.div>
           </Link>
         ))}
