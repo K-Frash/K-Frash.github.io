@@ -35,7 +35,7 @@ export default function Contact() {
           collaboration, or just want to say hello! 👋
         </p>
 
-        <form ref={formRef} class={style.form} onSubmit={handleSubmit}>
+        <form ref={formRef} class={style.form} action="https://formspree.io/f/xzzrqpqg" method="POST">
           <motion.input
             class={style.input}
             type="text"
