@@ -13,6 +13,7 @@ import Teaching from "./components/Teaching";
 import CourseLoader from "./components/courses/CourseLoader";
 import Resume from "./components/Resume";
 import Projects from "./components/Projects";
+import NotFound from "./components/NotFound";
 
 import { courses } from "./data/courses";
 
@@ -45,6 +46,9 @@ export default function App() {
             </Route>
             <Route path="/projects" component={Projects} />
             <Route path="/contact" component={Contact} />
+            <Route>
+              <NotFound />
+            </Route>
           </Switch>
         </div>
         <Footer />

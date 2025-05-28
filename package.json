@@ -1,6 +1,6 @@
 {
   "name": "kfrasher-portfolio",
-  "homepage": "https://k-frash.github.io/",
+  "homepage": "https://krisfrasheri.com/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -35,6 +35,7 @@
     "@types/prismjs": "^1.26.5",
     "typescript": "~5.7.2",
     "vite": "^6.3.1",
-    "vite-plugin-md-to-html": "^0.0.18"
+    "vite-plugin-md-to-html": "^0.0.18",
+    "vite-plugin-sitemap": "^0.8.2"
   }
 }

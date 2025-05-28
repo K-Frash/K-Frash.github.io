@@ -1,0 +1,43 @@
+.body {
+  padding: 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  height: fit-content;
+}
+
+.errMsg {
+  margin-bottom: 1rem;
+  display: flex;
+  /* flex: 1; */
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--pop1-color);
+  border-bottom: 4px solid var(--pop1-color);
+  padding-bottom: 0.5rem;
+}
+
+.msg {
+    font-size: 1.3rem;
+}
+
+.returnHome{
+    display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--pop1-color);
+  color: var(--tertiary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.returnHome:hover {
+  opacity: 0.85;
+}
