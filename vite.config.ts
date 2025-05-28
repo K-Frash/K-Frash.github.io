@@ -6,7 +6,14 @@ import sitemap from "vite-plugin-sitemap";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
-    preact(),
+    preact({
+      prerender: {
+        enabled: true,
+        // additionalPrerenderRoutes: ["/404"],
+        renderTarget: "#app",
+        previewMiddlewareEnabled: true,
+      },
+    }),
     vitePluginMdToHTML(),
     sitemap({
       hostname: "https://krisfrasheri.com",

@@ -1,4 +1,4 @@
-import { render } from "preact";
+import { hydrate, prerender as ssr } from 'preact-iso';
 import "./styles/theme.css";
 import style from "./styles/App.module.css";
 import { useEffect } from "preact/hooks";
@@ -16,6 +16,7 @@ import Projects from "./components/Projects";
 import NotFound from "./components/NotFound";
 
 import { courses } from "./data/courses";
+
 
 export default function App() {
   useEffect(() => {
@@ -57,4 +58,14 @@ export default function App() {
   );
 }
 
-render(<App />, document.querySelector("div#app") as HTMLElement);
+if (typeof window !== 'undefined') {
+  hydrate(<App />, document.querySelector("div#app") as HTMLElement);
+}
+
+export async function prerender() {
+  const { html, links } = await ssr(<App />);
+  return { html, links };
+}
+
+// import { render } from "preact"; // Playing around with SSG, TODO: may not need client-side rendering anymore
+// render(<App />, document.querySelector("div#app") as HTMLElement);

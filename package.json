@@ -21,6 +21,7 @@
     "highlight.js": "^11.11.1",
     "motion": "^12.10.5",
     "preact": "^10.26.4",
+    "preact-iso": "^2.9.1",
     "prismjs": "^1.30.0",
     "react-markdown": "^10.1.0",
     "react-masonry-css": "^1.0.16",
@@ -28,6 +29,7 @@
     "remark-gfm": "^4.0.1",
     "remark-math": "^6.0.0",
     "slugify": "^1.6.6",
+    "vite-ssg": "^27.0.1",
     "wouter": "^3.7.0"
   },
   "devDependencies": {
@@ -36,6 +38,7 @@
     "typescript": "~5.7.2",
     "vite": "^6.3.1",
     "vite-plugin-md-to-html": "^0.0.18",
-    "vite-plugin-sitemap": "^0.8.2"
+    "vite-plugin-sitemap": "^0.8.2",
+    "vite-plugin-ssr-ssg": "^1.4.1"
   }
 }
