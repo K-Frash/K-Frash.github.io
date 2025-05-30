@@ -17,6 +17,7 @@ export default defineConfig({
     vitePluginMdToHTML(),
     sitemap({
       hostname: "https://krisfrasheri.com",
+      generateRobotsTxt: false
     }),
   ],
   base: "/",

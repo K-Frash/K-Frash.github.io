@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://krisfrasheri.com/sitemap.xml
