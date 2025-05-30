@@ -127,7 +127,7 @@ export default function Resume() {
           logo={uwCS}
           link="https://uwaterloo.ca/computer-science/contacts/kris-frasheri"
           bullets={[
-            "Coordinated the delivery of:",
+            "Coordinated and delivered curricula for core Computer Science and Software Engineering courses, including:",
             [
               "Object-Oriented Programming (Bash, C++)",
               "User Interfaces (TypeScript | HTML | CSS | React)",
@@ -135,6 +135,7 @@ export default function Resume() {
               "Introduction to Programming Fundamentals (Python)",
             ],
             "Conducted bi-weekly lectures, presenting topics to classes of up to 220 students.",
+            "Supervised and trained groups of 5-10 TAs and held multiple weekly office hours to support student learning.",
             "Developed assignments and exams to evaluate students' understanding of core course concepts.",
           ]}
         />
@@ -201,7 +202,8 @@ export default function Resume() {
           bullets={[
             "Utilized Thompson Sampling with contextual bandits to personalize flyer recommendations to millions of users, increasing click-through rate by 8.8% yielding over $176,000 in annual revenue.",
             "Constructed ML pipelines by containerizing our models with Docker, state tracking with DVC + Hydra and model deployment with AWS Lambda.",
-            "Leveraged Snowflake and Sisense for live model performance monitoring and visualizations.",
+            "Designed and executed region-based A/B tests using canary releases and feature-flagged microservices to validate model performance, user engagement uplift, and system reliability in real time.",
+            "Leveraged Snowflake, AWS CloudWatch and Sisense for live model performance monitoring and visualizations.",
             "Coordinated big data analysis and feature engineering with respect to our stakeholders and clients' expectations.",
           ]}
         />
@@ -212,10 +214,11 @@ export default function Resume() {
           logo={imagine}
           link="https://imaginecommunications.com/"
           bullets={[
-            "Constructed upon a complex real-time graphics environment in OpenGL and C++.",
+            "Built a high-throughput 2D image-compositing pipeline in C++/OpenGL, with multi-layer alpha blending and double-buffered rendering for seamless real-time frame assembly.",
+            "Orchestrated packet scheduling using C++11 threads and IEEE 1588 (PTP) for frame-accurate Audio / Video sync.",
             "Implemented frame-accurate, data-source-agnostic synchronization in the in-house graphics emulator, enabling dynamic rendering from live content feeds across both local and remote media.",
-            "Engaged in the development and transfer of existing graphics systems to support various Linux environments.",
-            "Leveraged TypeScript and React in designing UI elements on the client side application.",
+            "Sustained 60 fps on Linux by optimizing draw-call batching, texture atlas packing, and memory pooling.",
+            "Developed a WebSocket-driven TypeScript/React control panel with live-reload and hot-swap capabilities, enabling clients to preview, manage, and switch multiple broadcast feeds in real time.",
           ]}
         />
         <ResumeCard
@@ -225,7 +228,7 @@ export default function Resume() {
           logo={dematic}
           link="https://www.dematic.com/en-ca/"
           bullets={[
-            "Leveraged Unity's Data Oriented Technology Stack (DOTS) in enhancing the performance of large scale client scenes that utilized over 500,000 dynamic entities by 135%.",
+            "Leveraged Unity’s Data Oriented Technology Stack (DOTS), Entity Component System (ECS) and Burst Compiler to optimize large-scale client scenes with over 500,000 dynamic entities, boosting frame rates from 15 fps to 60 fps.",
             "Implemented control flow algorithms for monorail and conveyor layouts in C# within Unity to optimize package transportation at runtime, enhancing customer supply chain efficiency by 37%.",
             "Introduced state exportation and restoration to allow clients to generate warehouse snapshots dynamically and eliminating the overhead costs of generating simulated track anomalies.",
             "Designed automated regression testing for new and existing scenes on the CI pipeline, reducing manual labour by 66%.",

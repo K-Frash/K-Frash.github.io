@@ -17,6 +17,7 @@ export default function About() {
 
   // Quick way to set up style transformation on mouse events
   const flipOffset = useRef(0);
+  const [isFlipping, setIsFlipping] = useState(false);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const z = useMotionValue(0);
@@ -47,7 +48,7 @@ export default function About() {
   }, []);
 
   function handleMouseEnter(e: PointerEvent) {
-    if (isMobile || !imageRef.current) return;
+    if (isMobile || !imageRef.current || isFlipping) return;
     const { left, top, width, height } =
       imageRef.current.getBoundingClientRect();
     const px = e.clientX - left - width / 2;
@@ -59,6 +60,7 @@ export default function About() {
   }
 
   function handleMouseExit() {
+    if (isFlipping) return;
     x.set(flipOffset.current);
     y.set(0);
     angleNum.set(135);
@@ -66,8 +68,9 @@ export default function About() {
   }
 
   function flipCard() {
+    if (isFlipping) return;
+    setIsFlipping(true);
     const x_temp = x.get();
-    const scale_temp = imgScale.get();
     const delta =
       Math.random() > 0.5 ? 360 * rotationIntensity : 180 * rotationIntensity;
     const flipDuration = 0.5;
@@ -80,12 +83,13 @@ export default function About() {
       ease: "easeInOut",
       onComplete: () => {
         flipOffset.current += delta;
+        setIsFlipping(false);
       },
     });
     animate(imgScale, [1, 1.55], {
       duration: flipDuration / 2,
       ease: "easeInOut",
-      onComplete: () => imgScale.set(scale_temp),
+      onComplete: () => imgScale.set(1),
     });
   }
 
@@ -103,15 +107,18 @@ export default function About() {
           <motion.div
             ref={imageRef}
             class={style.imageContainer}
-            onClick={flipCard}
-            onPointerMove={isMobile ? () => {} : handleMouseEnter}
-            onPointerLeave={isMobile ? () => {} : handleMouseExit}
+            onClick={() => {
+              if (!isFlipping) flipCard();
+            }}
+            onPointerMove={isMobile || isFlipping ? () => {} : handleMouseEnter}
+            onPointerLeave={isMobile || isFlipping ? () => {} : handleMouseExit}
             style={{
               rotateX: rotateX,
               rotateY: rotateY,
               rotateZ: rotateZ,
               scale: updateScale,
               background: gradient,
+              pointerEvents: isFlipping ? "none" : "auto",
             }}
           >
             <motion.img
@@ -193,22 +200,22 @@ export default function About() {
             </motion.span>
           </h1>
           <p>
-            I'm Kris Frasheri, an Artificial Intelligence (AI) &
-            Human-Computer Interaction (HCI) researcher with a my Master of
-            Mathematics in Computer Science at the University of Waterloo. Under
-            the supervision of Dr. Edith Law, my research lies in the
-            intersection of AI, HCI, and education, with a focus on exploring how LLMs can
+            I'm Kris Frasheri, an Artificial Intelligence (AI) & Human-Computer
+            Interaction (HCI) researcher with a my Master of Mathematics in
+            Computer Science at the University of Waterloo. Under the
+            supervision of Dr. Edith Law, my research lies in the intersection
+            of AI, HCI, and education, with a focus on exploring how LLMs can
             support collaborative reflection and shape value alignment
             throughout subjective decision-making tasks.
           </p>
           <p>
             Outside of research, I have taught a wide range of undergraduate
             computer science courses at the University of Waterloo as a
-            lecturer—including introductory Python programming, discrete math,
-            logic & computation, object-oriented design, and user interface
-            design. I have also worked professionally as an AI engineer,
-            graphics developer, and software engineer, gaining experience across
-            both startups and large-scale tech environments.
+            lecturer. These courses include; introductory Python programming,
+            discrete math, logic & computation, object-oriented design, and user
+            interface design. I have also worked professionally as an AI
+            engineer, graphics developer, and software engineer, gaining
+            experience across both startups and large-scale tech environments.
           </p>
           <p>
             If you're interested in my research, teaching, or just want to chat

@@ -1,19 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/logos/Logo_Sq_White.png" />
+    <link rel="icon" type="image/png" sizes="any" href="/logos/Logo_Sq_White.png"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kris Frasheri</title>
     <script>
       const theme = localStorage.getItem("theme");
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
       const useDark = theme === "dark" || (!theme && prefersDark);
       if (useDark) {
         document.documentElement.setAttribute("data-theme", "dark");
       }
       document.documentElement.classList.add("disable-transitions");
-    </script>    
+    </script>
   </head>
   <body>
     <div id="app"></div>
