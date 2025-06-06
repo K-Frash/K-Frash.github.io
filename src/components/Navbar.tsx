@@ -10,10 +10,10 @@ import ThemeToggle from "./ThemeToggle";
 
 const tabs = [
   { label: "ABOUT", path: "/" },
-  { label: "RÉSUMÉ", path: "/resume" },
-  { label: "TEACHING", path: "/teaching" },
-  { label: "PROJECTS", path: "/projects" },
-  { label: "CONTACT", path: "/contact" },
+  { label: "RÉSUMÉ", path: "/resume/" },
+  { label: "TEACHING", path: "/teaching/" },
+  { label: "PROJECTS", path: "/projects/" },
+  { label: "CONTACT", path: "/contact/" },
 ];
 
 export default function Navbar() {

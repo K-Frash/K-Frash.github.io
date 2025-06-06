@@ -1,6 +1,7 @@
 import style from "../styles/Projects.module.css";
 import { useState } from "preact/hooks";
 import { JSX } from "preact";
+import Helmet from "preact-helmet";
 
 import { AnimatePresence, motion } from "framer-motion";
 import Masonry from "react-masonry-css";
@@ -306,74 +307,99 @@ export default function Projects() {
   };
 
   return (
-    <div class={style.body}>
-      <h1 class={style.sectionTitle}>PROJECTS</h1>
-      <p class={style.titleText}>
-        Projects are how I explore technical ideas. Below are works I've built
-        around HCI, AI, and systems design.
-      </p>
-      <button
-        class={style.filterToggle}
-        onClick={() => setShowFilters((prev) => !prev)}
-        aria-expanded={showFilters}
-      >
-        {showFilters ? (
-          <>
-            Hide Filters <ChevronDown class={style.toggleIcon} />
-          </>
-        ) : (
-          <>
-            Show Filters <ChevronDown class={style.toggleIcon} />
-          </>
-        )}
-      </button>
+    <>
+      <Helmet
+        htmlAttributes={{ lang: "en" }}
+        title="Projects | Kris Frasheri"
+        titleTemplate="%s"
+        meta={[
+          {name: "description", content: "Explore projects by Kris Frasheri in AI, HCI, systems design, and more. See research, apps, and experiments from the University of Waterloo and beyond."},
+          {name: "keywords", content: "Kris Frasheri, projects, portfolio, AI, HCI, University of Waterloo, computer science, research, machine learning, reinforcement learning, web development, open source"},
+          { name: "author", content: "Kris Frasheri" },
+          { property: "og:title", content: "Projects | Kris Frasheri" },
+          {property: "og:description", content: "Explore technical projects and research by Kris Frasheri, including work in AI, HCI, and systems design."},
+          { property: "og:type", content: "website" },
+          { property: "og:url", content: "https://krisfrasheri.com/projects/" },
+          {property: "og:image", content: "https://krisfrasheri.com/assets/about/profile.jpg"},
+          { property: "og:locale", content: "en_US" },
+          { property: "og:locale:alternate", content: "en_CA" },
+          { name: "twitter:card", content: "summary_large_image" },
+          { name: "twitter:title", content: "Projects | Kris Frasheri" },
+          {name: "twitter:description", content: "See projects and research by Kris Frasheri - AI & HCI researcher at the University of Waterloo."},
+          {name: "twitter:image", content: "https://krisfrasheri.com/assets/about/profile.jpg"},
+        ]}
+        link={[
+          { rel: "canonical", href: "https://krisfrasheri.com/projects/" },
+        ]}
+      />
+      <div class={style.body}>
+        <h1 class={style.sectionTitle}>PROJECTS</h1>
+        <p class={style.titleText}>
+          Projects are how I explore technical ideas. Below are works I've built
+          around HCI, AI, and systems design.
+        </p>
+        <button
+          class={style.filterToggle}
+          onClick={() => setShowFilters((prev) => !prev)}
+          aria-expanded={showFilters}
+        >
+          {showFilters ? (
+            <>
+              Hide Filters <ChevronDown class={style.toggleIcon} />
+            </>
+          ) : (
+            <>
+              Show Filters <ChevronDown class={style.toggleIcon} />
+            </>
+          )}
+        </button>
 
-      <AnimatePresence initial={false}>
-        {showFilters && (
-          <motion.div
-            key="filters"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            style={{ overflow: "hidden" }}
-            class={style.filterContainer}
-          >
-            {/* <h1 class={style.filterTitle}>Filters</h1> */}
-            <div class={style.filters}>
-              {allTags.map((tag) => (
-                <button
-                  class={`${style.chip} ${
-                    selectedTags.includes(tag) ? style.activeChip : ""
-                  }`}
-                  onClick={() => toggleTag(tag)}
-                >
-                  {tag}
-                </button>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        <AnimatePresence initial={false}>
+          {showFilters && (
+            <motion.div
+              key="filters"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              style={{ overflow: "hidden" }}
+              class={style.filterContainer}
+            >
+              <div class={style.filters}>
+                {allTags.map((tag) => (
+                  <button
+                    class={`${style.chip} ${
+                      selectedTags.includes(tag) ? style.activeChip : ""
+                    }`}
+                    onClick={() => toggleTag(tag)}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className={style.masonryGrid}
-        columnClassName={style.masonryColumn}
-      >
-        {filtered.map((project, index) => (
-          <motion.div
-            key={`${project.title}-${selectedTags.length}`}
-            custom={index}
-            layout
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate="visible"
-            variants={cardFader}
-          >
-            <ProjectCard {...project} />
-          </motion.div>
-        ))}
-      </Masonry>
-    </div>
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className={style.masonryGrid}
+          columnClassName={style.masonryColumn}
+        >
+          {filtered.map((project, index) => (
+            <motion.div
+              key={`${project.title}-${selectedTags.length}`}
+              custom={index}
+              layout
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate="visible"
+              variants={cardFader}
+            >
+              <ProjectCard {...project} />
+            </motion.div>
+          ))}
+        </Masonry>
+      </div>
+    </>
   );
 }

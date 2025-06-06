@@ -7,6 +7,7 @@ import {
   useSpring,
   animate,
 } from "framer-motion";
+import Helmet from "preact-helmet";
 import { GitHubIcon, LinkedInIcon, EmailIcon } from "./icons";
 import profileImg from "../assets/about/profile.jpg";
 
@@ -94,136 +95,169 @@ export default function About() {
   }
 
   return (
-    <div class={style.body}>
-      <div class={style.profileSummary}>
-        <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{
-            duration: 0.4,
-            scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
-          }}
-        >
+    <>
+      <Helmet
+        htmlAttributes={{ lang: 'en' }}
+        title="About | Kris Frasheri"
+        titleTemplate="%s"
+        meta={[
+          { name: 'title', content: 'About | Kris Frasheri' },
+          { name: 'description', content: 'Nice to meet you 👋! My name is Kris Frasheri and I am an AI & HCI researcher and educator at the University of Waterloo, specializing in human-AI collaboration, value-sensitive design, and LLM-driven reflection tools.' },
+          { name: 'keywords', content: 'Kris Frasheri, kfrasher, AI researcher, HCI, University of Waterloo, UW, UW CS, human-computer interaction, value-sensitive design, LLM, educator, computer science, collaborative AI' },
+          { name: 'author', content: 'Kris Frasheri' },
+          { property: 'og:title', content: 'About | Kris Frasheri' },
+          { property: 'og:description', content: 'Nice to meet you 👋! My name is Kris Frasheri and I am an AI & HCI researcher and educator at the University of Waterloo, specializing in human-AI collaboration, value-sensitive design, and LLM-driven reflection tools.' },
+          { property: 'og:type', content: 'profile' },
+          { property: 'og:type:first_name', content: 'Kris' },
+          { property: 'og:type:last_name ', content: 'Frasheri' },
+          { property: 'og:url', content: 'https://krisfrasheri.com/' },
+          { property: 'og:image', content: 'https://krisfrasheri.com/assets/about/profile.jpg' },
+          { property: 'og:locale', content: 'en_US' },
+          { property: 'og:locale:alternate', content: 'en_CA' },
+          { name: 'twitter:card', content: 'summary_large_image' }, // TODO: This needs more testing, odd formating issues on X
+          { name: 'twitter:title', content: 'About | Kris Frasheri' },
+          { name: 'twitter:description', content: 'Kris Frasheri - AI & HCI researcher at the University of Waterloo.' },
+          { name: 'twitter:image', content: 'https://krisfrasheri.com/assets/about/profile.jpg' },
+        ]}
+        link={[
+          { rel: 'canonical', href: 'https://krisfrasheri.com/' },
+        ]}
+      />
+      <div class={style.body}>
+        <div class={style.profileSummary}>
           <motion.div
-            ref={imageRef}
-            class={style.imageContainer}
-            onClick={() => {
-              if (!isFlipping) flipCard();
-            }}
-            onPointerMove={isMobile || isFlipping ? () => {} : handleMouseEnter}
-            onPointerLeave={isMobile || isFlipping ? () => {} : handleMouseExit}
-            style={{
-              rotateX: rotateX,
-              rotateY: rotateY,
-              rotateZ: rotateZ,
-              scale: updateScale,
-              background: gradient,
-              pointerEvents: isFlipping ? "none" : "auto",
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.4,
+              scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
             }}
           >
-            <motion.img
-              src={profileImg}
-              alt="Kris Frasheri"
-              class={style.profileImage}
-              initial={{ scale: 0.75 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-            />
-          </motion.div>
-        </motion.div>
-
-        <div class={style.infoBox}>
-          <div class={style.degrees}>
-            <p>Computer Science, M.Math.</p>
-            <p>Computer Science, B.CS.</p>
-          </div>
-          <div class={style.jobTitle}>
-            <p>Computer Science Lecturer @</p>
-            <p>The University of Waterloo</p>
-          </div>
-          <div class={style.links}>
-            <a
-              href="https://github.com/K-Frash"
-              target="_blank"
-              rel="noopener noreferrer"
-              class={style.linkItem}
-            >
-              <GitHubIcon class={style.icon} />
-              <span>Github</span>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/krisfrasheri/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class={style.linkItem}
-            >
-              <LinkedInIcon class={style.icon} />
-
-              <span>LinkedIn</span>
-            </a>
-            <a
-              href="mailto:krisfrasheri@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              class={style.linkItem}
-            >
-              <EmailIcon class={style.icon} />
-
-              <span>krisfrasheri@gmail.com</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class={style.introBody}>
-        <div class={style.name}>Kris Frasheri</div>
-        <div class={style.titles}>
-          HCI Researcher | AI Engineer | Graphics Engineer | Educator
-        </div>
-        <div class={style.description}>
-          <h1>
-            Hello there!
-            <motion.span
-              class={style.wave}
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{
-                duration: 0.2,
-                scale: {
-                  type: "spring",
-                  visualDuration: 0.2,
-                  bounce: 0.75,
-                  delay: 1,
-                },
+            <motion.div
+              ref={imageRef}
+              class={style.imageContainer}
+              onClick={() => {
+                if (!isFlipping) flipCard();
+              }}
+              onPointerMove={
+                isMobile || isFlipping ? () => {} : handleMouseEnter
+              }
+              onPointerLeave={
+                isMobile || isFlipping ? () => {} : handleMouseExit
+              }
+              style={{
+                rotateX: rotateX,
+                rotateY: rotateY,
+                rotateZ: rotateZ,
+                scale: updateScale,
+                background: gradient,
+                pointerEvents: isFlipping ? "none" : "auto",
               }}
             >
-              👋
-            </motion.span>
-          </h1>
-          <p>
-            I'm Kris Frasheri, an Artificial Intelligence (AI) & Human-Computer
-            Interaction (HCI) researcher with a Master of Mathematics in
-            Computer Science at the University of Waterloo. Under the
-            supervision of Dr. Edith Law, my research lies in the intersection
-            of AI, HCI, and education, with a focus on exploring how LLMs can
-            support collaborative reflection and shape value alignment
-            throughout subjective decision-making tasks.
-          </p>
-          <p>
-            Outside of research, I have taught a wide range of undergraduate
-            computer science courses at the University of Waterloo as a
-            lecturer. These courses include introductory Python programming,
-            discrete math, logic & computation, object-oriented design, and user
-            interface design. I have also worked professionally as an AI
-            engineer, graphics developer, and software engineer, gaining
-            experience across both startups and large-scale tech environments.
-          </p>
-          <p>
-            If you're interested in my research, teaching, or want to chat about
-            intelligent systems, feel free to reach out. I'm always happy to
-            connect!
-          </p>
+              <motion.img
+                src={profileImg}
+                alt="Kris Frasheri"
+                class={style.profileImage}
+                initial={{ scale: 0.75 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              />
+            </motion.div>
+          </motion.div>
+
+          <div class={style.infoBox}>
+            <div class={style.degrees}>
+              <p>Computer Science, M.Math.</p>
+              <p>Computer Science, B.CS.</p>
+            </div>
+            <div class={style.jobTitle}>
+              <p>Computer Science Lecturer @</p>
+              <p>The University of Waterloo</p>
+            </div>
+            <div class={style.links}>
+              <a
+                href="https://github.com/K-Frash"
+                target="_blank"
+                rel="noopener noreferrer"
+                class={style.linkItem}
+              >
+                <GitHubIcon class={style.icon} />
+                <span>Github</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/krisfrasheri/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class={style.linkItem}
+              >
+                <LinkedInIcon class={style.icon} />
+
+                <span>LinkedIn</span>
+              </a>
+              <a
+                href="mailto:krisfrasheri@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class={style.linkItem}
+              >
+                <EmailIcon class={style.icon} />
+
+                <span>krisfrasheri@gmail.com</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class={style.introBody}>
+          <div class={style.name}>Kris Frasheri</div>
+          <div class={style.titles}>
+            HCI Researcher | AI Engineer | Graphics Engineer | Educator
+          </div>
+          <div class={style.description}>
+            <h1>
+              Hello there!
+              <motion.span
+                class={style.wave}
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{
+                  duration: 0.2,
+                  scale: {
+                    type: "spring",
+                    visualDuration: 0.2,
+                    bounce: 0.75,
+                    delay: 1,
+                  },
+                }}
+              >
+                👋
+              </motion.span>
+            </h1>
+            <p>
+              I'm Kris Frasheri, an Artificial Intelligence (AI) &
+              Human-Computer Interaction (HCI) researcher with a Master of
+              Mathematics in Computer Science at the University of Waterloo.
+              Under the supervision of Dr. Edith Law, my research lies in the
+              intersection of AI, HCI, and education, with a focus on exploring
+              how LLMs can support collaborative reflection and shape value
+              alignment throughout subjective decision-making tasks.
+            </p>
+            <p>
+              Outside of research, I have taught a wide range of undergraduate
+              computer science courses at the University of Waterloo as a
+              lecturer. These courses include introductory Python programming,
+              discrete math, logic & computation, object-oriented design, and
+              user interface design. I have also worked professionally as an AI
+              engineer, graphics developer, and software engineer, gaining
+              experience across both startups and large-scale tech environments.
+            </p>
+            <p>
+              If you're interested in my research, teaching, or want to chat
+              about intelligent systems, feel free to reach out. I'm always
+              happy to connect!
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

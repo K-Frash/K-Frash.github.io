@@ -21,7 +21,9 @@
     "highlight.js": "^11.11.1",
     "motion": "^12.10.5",
     "preact": "^10.26.4",
+    "preact-helmet": "^4.0.0-alpha-3",
     "preact-iso": "^2.9.1",
+    "preact-render-to-string": "^6.5.13",
     "prismjs": "^1.30.0",
     "react-markdown": "^10.1.0",
     "react-masonry-css": "^1.0.16",
@@ -38,8 +40,6 @@
     "typescript": "~5.7.2",
     "vite": "^6.3.1",
     "vite-plugin-md-to-html": "^0.0.18",
-    "vite-plugin-sitemap": "^0.8.2",
-    "vite-plugin-ssr": "^0.4.142",
-    "vite-plugin-ssr-ssg": "^1.4.1"
+    "vite-plugin-sitemap": "^0.8.2"
   }
 }
