@@ -201,7 +201,7 @@ export default function About() {
           </h1>
           <p>
             I'm Kris Frasheri, an Artificial Intelligence (AI) & Human-Computer
-            Interaction (HCI) researcher with a my Master of Mathematics in
+            Interaction (HCI) researcher with a Master of Mathematics in
             Computer Science at the University of Waterloo. Under the
             supervision of Dr. Edith Law, my research lies in the intersection
             of AI, HCI, and education, with a focus on exploring how LLMs can
@@ -211,16 +211,16 @@ export default function About() {
           <p>
             Outside of research, I have taught a wide range of undergraduate
             computer science courses at the University of Waterloo as a
-            lecturer. These courses include; introductory Python programming,
+            lecturer. These courses include introductory Python programming,
             discrete math, logic & computation, object-oriented design, and user
             interface design. I have also worked professionally as an AI
             engineer, graphics developer, and software engineer, gaining
             experience across both startups and large-scale tech environments.
           </p>
           <p>
-            If you're interested in my research, teaching, or just want to chat
-            about intelligent systems feel free to reach out. I'm always happy
-            to connect!
+            If you're interested in my research, teaching, or want to chat about
+            intelligent systems, feel free to reach out. I'm always happy to
+            connect!
           </p>
         </div>
       </div>
